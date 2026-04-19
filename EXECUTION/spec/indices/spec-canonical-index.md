@@ -103,6 +103,19 @@ Why each architectural choice was made. Read when you need to understand WHY a r
 
 Practical patterns and standards for implementation.
 
+### Context-Aware Agent Pattern
+**File:** `CANONICAL/specifications/context-aware-agent-pattern.md`  
+**What:** How agents create and use project-specific dynamic context  
+**Authority:** Standard (mandatory for all agent work)  
+**Sections:**
+- Three core concepts (SPECIALIZATIONS, context-aware, execution-state)
+- Complete agent workflow examples
+- Folder structure templates
+- Anti-patterns and pitfalls
+- Decision matrix by use case
+
+**When:** During task work - whenever organizing context-aware documents
+
 ### Definition of Done
 **File:** `CANONICAL/specifications/definition_of_done.md`  
 **What:** 45+ detailed criteria for feature completion  
@@ -141,6 +154,9 @@ Practical patterns and standards for implementation.
 ### "I need to know WHY a decision was made"
 → `CANONICAL/decisions/ADR-*.md` (architecture decisions)
 
+### "I need to organize my context like an agent"
+→ `CANONICAL/specifications/context-aware-agent-pattern.md` (canonical pattern)
+
 ### "I need to know HOW to follow a rule"
 → `CANONICAL/specifications/definition_of_done.md` (practical patterns)
 
@@ -162,7 +178,7 @@ After mastering CANONICAL, explore:
 | **Emergency** | When things break | `guides/emergency/` |
 | **Reference** | Definitions & examples | `guides/reference/` |
 | **Custom** | Project-specific | `custom/[PROJECT]/` |
-| **Runtime** | Quick lookup | `runtime/` |
+| **Indices** | Quick lookup | `indices/` |
 
 ---
 
@@ -174,8 +190,10 @@ After mastering CANONICAL, explore:
 - Need to document? → `CANONICAL/specifications/communication.md`
 - Don't understand a rule? → Find matching ADR in `CANONICAL/decisions/`
 - Style questions? → `CANONICAL/rules/conventions.md`
+- Need to organize context? → `CANONICAL/specifications/context-aware-agent-pattern.md`
 
 ---
 
 **For complete SDD docs:** [NAVIGATION.md](../../../NAVIGATION.md)  
-**For quick search:** [search-keywords.md](../runtime/search-keywords.md)
+**For quick search:** [search-keywords.md](../indices/search-keywords.md)  
+**Last Updated:** April 19, 2026

@@ -177,6 +177,9 @@ For when things go wrong.
 **"I need quick answers"**
 → `SESSION_QUICK_REFERENCE.md` (one-page lookup)
 
+**"I need to organize my context"**
+→ `CANONICAL/specifications/context-aware-agent-pattern.md` (canonical pattern)
+
 ### By Duration
 
 **5 minutes:**
@@ -234,9 +237,11 @@ Emergency: When broken
 | Git conflicts | `HANDLING_MERGE_CONFLICTS_IN_DOCS.md` |
 | Framework broken | `guides/emergency/README.md` |
 | Need quick answer | `SESSION_QUICK_REFERENCE.md` |
+| Need to organize context | `CANONICAL/specifications/context-aware-agent-pattern.md` |
 
 ---
 
 **For complete SDD docs:** [NAVIGATION.md](../../../NAVIGATION.md)  
-**For search by keywords:** [search-keywords.md](../runtime/search-keywords.md)  
-**For CANONICAL layer:** [spec-canonical-index.md](../runtime/spec-canonical-index.md)
+**For search by keywords:** [search-keywords.md](../indices/search-keywords.md)  
+**For CANONICAL layer:** [spec-canonical-index.md](../indices/spec-canonical-index.md)  
+**Last Updated:** April 19, 2026

@@ -49,6 +49,19 @@ Use this when you know WHAT you're looking for, but not WHERE it is.
 
 ---
 
+## Context-Aware Agent Patterns
+
+| Concept | Find In | File |
+|---------|----------|------|
+| **How to use context-aware** | Specifications | `CANONICAL/specifications/context-aware-agent-pattern.md` |
+| **Agent patterns** | Specifications | `CANONICAL/specifications/context-aware-agent-pattern.md` |
+| **SPECIALIZATIONS vs context** | Specifications | `CANONICAL/specifications/context-aware-agent-pattern.md` |
+| **Task progress tracking** | Specifications | `CANONICAL/specifications/context-aware-agent-pattern.md` |
+| **Analysis documentation** | Specifications | `CANONICAL/specifications/context-aware-agent-pattern.md` |
+| **Execution-state management** | Specifications | `CANONICAL/specifications/context-aware-agent-pattern.md` |
+
+---
+
 ## Implementation Standards
 
 | Concept | Find In | File |
@@ -137,6 +150,15 @@ Use this when you know WHAT you're looking for, but not WHERE it is.
 ### "I want to learn SDD"
 → Start: `guides/reference/HOW_EACH_LAYER_WORKS.md`
 
+### "I need to organize my context"
+→ `CANONICAL/specifications/context-aware-agent-pattern.md` (canonical pattern)
+
 ---
 
 **Still can't find it?** → Check [NAVIGATION.md](../../../NAVIGATION.md) for complete index
+
+---
+
+**Last Updated:** April 19, 2026  
+**Authority:** SPEC v2.1  
+**Location:** `EXECUTION/spec/indices/`
