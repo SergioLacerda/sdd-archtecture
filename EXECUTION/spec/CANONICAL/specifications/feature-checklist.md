@@ -17,15 +17,15 @@ It provides the COMPLETE sequence with time estimates and links to each spec.
 
 Before implementing any feature:
 
-1. **Read:** `/docs/ia/specs/runtime/execution_state.md`
+1. **Read:** `.ai/runtime/execution-state/_current.md` (in your project)
    - Check current focus, in-progress work, and "Next Actions"
    - Verify you're NOT conflicting with active threads
 
-2. **If applicable:** Check `/docs/ia/specs/runtime/threads/` for active work
+2. **If applicable:** Check `.ai/runtime/threads/` for active work
    - Do NOT touch other threads
    - Follow isolated thread's "Next Steps"
 
-3. **After completion:** Update execution_state.md with:
+3. **After completion:** Update execution-state with:
    - Decisions taken
    - Risks flagged
    - Open questions

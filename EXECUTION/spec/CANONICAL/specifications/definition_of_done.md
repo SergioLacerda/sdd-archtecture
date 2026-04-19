@@ -307,8 +307,8 @@ Before merge, verify:
 
 ## Update Runtime State
 
-- [ ] `execution_state.md` updated with completion summary
-- [ ] If complex: checkpoint created in `runtime/checkpoints/`
+- [ ] `execution-state/_current.md` updated with completion summary (in `.ai/runtime/`)
+- [ ] If complex: checkpoint created in `.ai/runtime/checkpoints/`
 - [ ] Decisions documented
 - [ ] Risks flagged
 - [ ] "Next Actions" updated for next agent

@@ -35,11 +35,18 @@
    ├── VALIDATION_QUIZ.md
    └── README.md
 
-✅ docs/ia/guides/runtime/
-   ├── README.md
-   ├── CONTEXT_AWARE_USAGE.md (400 lines)
-   ├── example-task-progress.md (300 lines)
-   └── _INDEX.md
+✅ EXECUTION/spec/indices/ (Framework templates for projects)
+   ├── _INDEX.md
+   ├── search-keywords.md
+   ├── spec-canonical-index.md
+   └── spec-guides-index.md
+
+✅ EXECUTION/spec/CANONICAL/specifications/ (Canonical patterns)
+   ├── context-aware-agent-pattern.md (agent context organization)
+   ├── runtime-indices-specification.md (index system specification)
+   ├── architecture.md
+   ├── definition_of_done.md
+   └── ... (other specifications)
 
 ✅ docs/ia/guides/operational/ (7 guides)
 ✅ docs/ia/guides/emergency/ (5 runbooks)

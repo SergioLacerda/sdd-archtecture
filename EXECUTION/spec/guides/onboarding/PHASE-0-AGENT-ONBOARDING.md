@@ -45,17 +45,18 @@ min_version = 2.1
 
 ```bash
 # Navigate to SPEC framework
-cd $(grep spec_path .spec.config | cut -d' ' -f3)
+SPEC_PATH=$(grep spec_path .spec.config | cut -d' ' -f3)
+cd $SPEC_PATH
 
 # Verify key directories exist
-ls /EXECUTION/spec/CANONICAL/rules/ia-rules.md
-ls docs/ia/guides/runtime/
+ls EXECUTION/spec/CANONICAL/rules/ia-rules.md
+ls EXECUTION/spec/indices/
 ls templates/
 ```
 
 **Agent validates:**
 - ✅ `/EXECUTION/spec/CANONICAL/` exists
-- ✅ `docs/ia/guides/runtime/` exists (where to find instructions)
+- ✅ `EXECUTION/spec/indices/` exists (framework index templates)
 - ✅ `templates/` exists (to copy from)
 
 ---
@@ -144,14 +145,11 @@ cat $SPEC_PATH/EXECUTION/spec/CANONICAL/rules/ia-rules.md | head -100
 - ✅ Can read ia-rules.md from SPEC
 - ✅ Understands 5 core concepts above
 
-### 3.2 Read Context-Aware Guide
+### 3.2 Read Context-Aware Pattern
 
 ```bash
-# Read the runtime guide (shows how to use dynamic context)
-cat $SPEC_PATH/docs/ia/guides/runtime/README.md
-
-# Read complete usage guide
-cat $SPEC_PATH/docs/ia/guides/runtime/CONTEXT_AWARE_USAGE.md | head -100
+# Read how agents organize dynamic context (canonical specification)
+cat $SPEC_PATH/EXECUTION/spec/CANONICAL/specifications/context-aware-agent-pattern.md | head -150
 ```
 
 **Agent validates:**
@@ -407,7 +405,7 @@ When you finish PHASE 0, you can claim:
 
 - **AGENT_HARNESS.md** — Full 7-phase protocol (you're in phase 0)
 - **ia-rules.md** — The rules you must follow
-- **CONTEXT_AWARE_USAGE.md** — How to use dynamic context
+- **context-aware-agent-pattern.md** — How agents organize dynamic context (CANONICAL specification)
 - **execution-state/_current.md** — Project task tracking
 
 ---

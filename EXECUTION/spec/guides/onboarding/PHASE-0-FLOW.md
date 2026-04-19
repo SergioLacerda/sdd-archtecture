@@ -96,7 +96,7 @@ Step 4: Copy Templates
 
 Step 5: Read Documentation
   └─ Read ia-rules.md
-     Read CONTEXT_AWARE_USAGE.md
+     Read context-aware-agent-pattern.md
      Take VALIDATION_QUIZ
 
 Step 6: Validate Knowledge
