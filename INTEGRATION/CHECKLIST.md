@@ -56,7 +56,7 @@ ls -la | grep "^\."
 # Should show: .github, .vscode, .cursor, scripts, .ai
 ```
 
-**Stuck?** → See [STEP_1_SETUP.md](./STEP_1_SETUP.md)
+**Stuck?** → See [STEP_1.md](./STEP_1.md)
 
 ---
 
@@ -91,7 +91,7 @@ cat .spec.config | head -5
 # Should show: spec_path = ...
 ```
 
-**Stuck?** → See [STEP_2_TEMPLATES.md](./STEP_2_TEMPLATES.md)
+**Stuck?** → See [STEP_2.md](./STEP_2.md)
 
 ---
 
@@ -123,7 +123,7 @@ cat .spec.config | grep spec_path
 # Should show: spec_path = ../sdd-archtecture
 ```
 
-**Stuck?** → See [STEP_3_CONFIG.md](./STEP_3_CONFIG.md)
+**Stuck?** → See [STEP_3.md](./STEP_3.md)
 
 ---
 
@@ -155,7 +155,7 @@ cat .ai/runtime/search-keywords.md
 # Should have 703 lines
 ```
 
-**Stuck?** → See [STEP_4_VALIDATE.md](./STEP_4_VALIDATE.md)
+**Stuck?** → See [STEP_4.md](./STEP_4.md)
 
 ---
 
@@ -194,7 +194,7 @@ git status
 # Should show: On branch main, nothing to commit
 ```
 
-**Stuck?** → See [STEP_5_COMMIT.md](./STEP_5_COMMIT.md)
+**Stuck?** → See [STEP_5.md](./STEP_5.md)
 
 ---
 

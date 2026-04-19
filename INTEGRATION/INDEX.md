@@ -15,27 +15,27 @@
 
 Follow in order (20-30 minutes total):
 
-1. **[STEP_1_SETUP.md](./STEP_1_SETUP.md)**
+1. **[STEP_1.md](./STEP_1.md)**
    - Create project structure
    - Verify directory layout
    - ~5 minutes
 
-2. **[STEP_2_TEMPLATES.md](./STEP_2_TEMPLATES.md)**
+2. **[STEP_2.md](./STEP_2.md)**
    - Copy template files from `INTEGRATION/templates/`
    - Understand what each file does
    - ~5 minutes
 
-3. **[STEP_3_CONFIG.md](./STEP_3_CONFIG.md)**
+3. **[STEP_3.md](./STEP_3.md)**
    - Edit `.spec.config` (2 lines!)
    - Verify path to sdd-archtecture
    - ~2 minutes
 
-4. **[STEP_4_VALIDATE.md](./STEP_4_VALIDATE.md)**
+4. **[STEP_4.md](./STEP_4.md)**
    - Run validation script
    - Check .ai/ infrastructure created
    - ~5 minutes
 
-5. **[STEP_5_COMMIT.md](./STEP_5_COMMIT.md)**
+5. **[STEP_5.md](./STEP_5.md)**
    - Git add + commit
    - Verify files tracked
    - ~3 minutes

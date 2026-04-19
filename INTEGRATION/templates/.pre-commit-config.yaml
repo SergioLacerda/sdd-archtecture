@@ -1,0 +1,54 @@
+# Pre-commit hooks configuration for SDD framework governance
+# Runs checks before each commit to ensure quality
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+      - id: end-of-file-fixer
+        name: Fix end of file
+      - id: check-yaml
+        name: Check YAML syntax
+      - id: check-json
+        name: Check JSON syntax
+      - id: detect-private-key
+        name: Detect private keys
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+        name: Check file size (<1MB)
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        name: Format with Black
+        language_version: python3
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        name: Sort imports
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        name: Lint with Flake8
+        args: ['--max-line-length=120', '--ignore=E501,W503']
+
+ci:
+  autofix_commit_msg: |
+    chore: Auto-format via pre-commit hooks
+    
+    - Formatted with Black
+    - Sorted imports with isort
+    - Fixed trailing whitespace
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: 'chore: Auto-update pre-commit hooks'
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false
