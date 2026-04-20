@@ -3,7 +3,8 @@
 **Goal:** Point `.spec.config` to sdd-architecture (just 2 lines!)  
 **Duration:** 2 minutes  
 **Complexity:** Simple (edit 1 file)  
-**Prerequisites:** Step 2 complete (templates copied)
+**Prerequisites:** Step 2 complete (templates copied)  
+**Note:** You'll add `adoption_level` in STEP 6 after answering intention questions
 
 ---
 
@@ -16,7 +17,7 @@ You have:
 
 You're about to:
 - Edit 1 file (`.spec.config`)
-- Configure 1 variable (`spec_path`)
+- Configure 2 variables (`spec_path` now, `adoption_level` in STEP 6)
 - Move to Step 4 (validation)
 
 ---
@@ -27,16 +28,23 @@ You're about to:
 
 **Format:** INI (simple key=value)
 
+**Now (STEP 3):**
 ```ini
 [spec]
 spec_path = ../sdd-architecture
 ```
 
-That's it! Just 2 lines.
+**Later (STEP 6):** You'll add:
+```ini
+[spec]
+spec_path = ../sdd-architecture
+adoption_level = lite
+```
+(or `adoption_level = full`)
 
 ---
 
-## ✏️ How to Edit
+## ✏️ How to Edit (STEP 3 Only)
 
 ### Option A: From Command Line
 

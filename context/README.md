@@ -5,29 +5,66 @@
 
 ---
 
-## 🗂️ Directory Structure
+## � Directory Structure
 
 ```
-/context/
-├── README.md                                 (this file - central index)
-├── QUICK_REFERENCE.md                        (50 lines - agent optimized)
+context/
+├── README.md (this file - central index)
+├── INDEX.md (detailed navigation guide)
+├── QUICK_REFERENCE.md (50 lines - agent optimized)
 │
-├── phases/                                  (compact 40-50 line summaries)
-│   ├── PHASE_1_ENTRY_POINTS.md             (documentation foundation)
-│   ├── PHASE_2_REORGANIZATION.md           (structural reorganization)
-│   ├── PHASE_3_4_VALIDATION_TESTING.md     (validation & testing)
-│   └── PHASE_7_DELIVERY.md                 (final delivery & automation)
+├── analysis/
+│   ├── CRITIQUE-RESPONSE-EXEC-SUMMARY.md (1 page scorecard)
+│   └── CRITIQUE-RESPONSE-COLD-REVIEW.md (detailed analysis)
 │
-└── detailed/                                (full original documentation)
-    ├── PHASE_1_FULL.md                     (complete phase 1 docs)
-    ├── PHASE_2_FULL.md                     (complete phase 2 docs)
-    ├── PHASE_3_4_FULL.md                   (complete phase 3-4 docs)
-    └── PHASE_7_FULL.md                     (complete phase 7 docs)
+├── decision-records/ (ready for future decisions)
+│
+├── phases/ (compact summaries, 40-50 lines each)
+│   ├── PHASE_1_ENTRY_POINTS.md
+│   ├── PHASE_2_REORGANIZATION.md
+│   ├── PHASE_3_4_VALIDATION_TESTING.md
+│   └── PHASE_7_DELIVERY.md
+│
+└── detailed/ (full documentation, 100+ lines each)
+    ├── PHASE_1_FULL.md
+    ├── PHASE_2_FULL.md
+    ├── PHASE_3_4_FULL.md
+    └── PHASE_7_FULL.md
 ```
 
 ---
 
-## 📖 Consolidated Phase Documentation
+## � Framework Validation & Analysis
+
+### [Critique Response Analysis](./analysis/)
+
+**How we responded to 6 external criticisms:**
+
+- **[Executive Summary](./analysis/CRITIQUE-RESPONSE-EXEC-SUMMARY.md)** — Quick scorecard (1 page)
+- **[Cold Review](./analysis/CRITIQUE-RESPONSE-COLD-REVIEW.md)** — Detailed responses
+
+| Criticism | Status | Impact |
+|-----------|--------|--------|
+| Tech-agnostic false | ✅ FIXED | Now: Python + FastAPI + v3.0 roadmap |
+| Over-engineering | ✅ FIXED | Now: LITE (10 DoD) + FULL (45 DoD) |
+| Zero maturity | ⚠️ PARTIAL | Honest narrative, repo typo persists |
+| Minimal code | ⏳ v2.2 | Docs complete, example coming |
+| Constitution rigid | ✅ PLANNED | RFC process designed for v3.0 |
+| License unclear | ✅ FIXED | MIT explicit + badge |
+
+**Overall: 4.5/6 addressed**
+
+---
+
+## 🎯 Decision Records (Planned)
+
+As framework evolves, we'll add decision records explaining:
+- Why we designed LITE/FULL split
+- Why we chose intention-driven integration
+- Multi-language strategy
+- Constitution versioning approach
+
+---
 
 ### [Phase 1: Entry Points & Documentation Foundation](phases/PHASE_1_ENTRY_POINTS.md)
 

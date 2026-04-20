@@ -1,6 +1,28 @@
 # 🚀 START HERE — EXECUTION Workflow
 
-**You're about to implement something. This guide gets you oriented in 5 minutes.**
+**You're about to implement something. This guide gets you oriented.**
+
+---
+
+## 🎯 STEP 0: Choose Your Adoption Path (Mandatory First)
+
+**Have you picked LITE or FULL?**
+
+### If NO → Do this NOW (5 min)
+Go to: **[adoption/INDEX.md](./spec/guides/adoption/INDEX.md)**
+- Read the comparison table
+- Choose LITE (15 min, learning) or FULL (40 min, production)
+- Come back here once decided
+
+### If YES → Continue below ✅
+
+Your choice affects:
+- ✅ Which principles you follow (10 vs 15)
+- ✅ Which rules you enforce (5 vs 16)  
+- ✅ Setup time (15 vs 40 min)
+- ✅ Which workflows you use (3 vs 7 phases)
+
+**Can't remember which you chose?** Check `.spec.config` or ask in your team channel.
 
 ---
 
@@ -12,15 +34,27 @@ Pick ONE:
 
 You need to set up your development environment with SDD governance.
 
-→ **Read:** [PHASE_0_SETUP.md](./docs/ia/guides/onboarding/PHASE-0-AGENT-ONBOARDING.md)
+→ **First:** Confirm you chose LITE or FULL (see STEP 0 above)
 
-*Output: `.ai/` infrastructure created, you're ready to work*
+→ **Then read:** [PHASE_0_SETUP.md](./docs/ia/guides/onboarding/PHASE-0-AGENT-ONBOARDING.md)
 
-**Time:** 20-30 minutes
+→ **Your setup will use:** 
+- LITE: 5 essential rules + 10 DoD
+- FULL: 16 mandatory rules + 45 DoD
 
----
+*Output: `.ai/` infrastructure created with your adoption level, you're ready to work*
 
-### 2️⃣ **"I'm implementing a feature/bug right now"**
+**Time:** 15 min (LITE) or 40 min (FULL) + PHASE_0
+
+---First:** Confirm you chose LITE or FULL (see STEP 0 above)
+
+→ **Then read:** [AGENT_HARNESS.md](./docs/ia/guides/onboarding/AGENT_HARNESS.md)
+
+→ **Then:** Choose your PATH (A=bug, B=simple feature, C=complex, D=multithread)
+
+→ **Your workflow will have:**
+- LITE: Simplified checklist (easier, faster)
+- FULL: Complete checklist (thorough, auditable
 
 You have a task assigned. You want to implement it following SDD rules.
 
@@ -77,13 +111,28 @@ Confused about architecture? Rules? Workflow?
 
 ---
 
-## 🎯 Seven Phases of AGENT_HARNESS (Quick Summary)
+## 📋 LITE vs FULL — Key Differences
+
+| Aspect | LITE | FULL |
+|--------|------|------|
+| **Setup** | 15 min | 40 min |
+| **Principles** | 10 core | 15 complete |
+| **Rules** | 5 essential | 16 mandatory |
+| **DoD** | 10 criteria | 45 criteria |
+| **Phases** | 3 simplified | 7 full workflow |
+| **Best for** | Learning, <5 people | Production, mission-critical |
+| **Upgrade** | → FULL (30 min) | — |
+
+---
+
+## 🎯 Workflow Phases (Your adoption level affects detail)
 
 If you picked **#2 above**, here's what you'll do:
 
 ```
-PHASE 1: Lock to Rules (15 min)
-  → Read constitution + ia-rules
+PHASE 1: Lock to Rules (10-15 min)
+  LITE:  → Read 10 principles
+  FULL:  → Read 15 principles + ia-rules
   → Pass VALIDATION_QUIZ (≥80%)
 
 PHASE 2: Check Execution State (5 min)
@@ -96,25 +145,28 @@ PHASE 3: Choose PATH (5 min)
   → C = Complex feature (3+ days)
   → D = Multi-thread work (coordinated)
 
-PHASE 4: Load Context (10-20 min)
-  → Search .ai/runtime/search-keywords.md
+PHASE 4: Load Context (5-20 min)
+  LITE:  → Read simplified docs for your PATH
+  FULL:  → Search .ai/runtime/search-keywords.md
   → Read only docs for your PATH
 
 PHASE 5: Implement (1-8 hours)
   → Write code + tests (TDD)
   → Track progress in .ai/context-aware/task-progress/
 
-PHASE 6: Validate (10-15 min)
+PHASE 6: Validate (5-15 min)
   → All tests pass
-  → Check definition_of_done (45+ items)
+  LITE:  → Check definition_of_done (10 items)
+  FULL:  → Check definition_of_done (45+ items)
 
-PHASE 7: Checkpoint (10 min)
-  → Document decisions + risks
-  → Create PR
+PHASE 7: Checkpoint (5-10 min)
+  → Document decisions
+  LITE:  → Light documentation
+  FULL:  → Complete ADR + risks
 ```
 
-**Total setup time:** 40-50 min (one time)  
-**Implementation time:** Depends on complexity
+**Total setup time:** 15-40 min (one time, depends on LITE vs FULL)  
+**Implementation time:** Depends on complexity + adoption level
 
 ---
 

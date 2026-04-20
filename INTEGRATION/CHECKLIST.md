@@ -1,25 +1,48 @@
-# ✅ INTEGRATION — 5-Step Checklist
+# ✅ INTEGRATION — 6-Step Checklist
 
 **Quick reference for adding your project to SDD framework**
 
-**Total time:** 20-30 minutes (5 min buffer = 30 min guaranteed)
+**Total time:** 30 minutes (20 min technical setup + 10 min intention detection)
+
+---
+
+## 🎯 Before Starting: Know the Process
+
+**This integration has 2 phases:**
+
+1. **STEP 0-5 (Technical Setup):** Everyone does the same thing
+   - Copy templates
+   - Configure files
+   - Validate
+   - Takes 20 min
+
+2. **STEP 6 (Intention Detection):** Project lead answers questions
+   - "What's your team size?"
+   - "Is this production or learning?"
+   - "What's your governance appetite?"
+   - Results determine LITE or FULL
+   - Takes 10 min
 
 ---
 
 ## 📋 The Process
 
 ```
-STEP 1: Setup
-   ↓ (5 min)
-STEP 2: Templates
-   ↓ (5 min)
-STEP 3: Config
-   ↓ (2 min)
-STEP 4: Validate
-   ↓ (5 min)
-STEP 5: Commit
-   ↓ (3 min)
-✅ DONE
+STEP 1: Setup directories (5 min)
+   ↓
+STEP 2: Copy templates (5 min)
+   ↓
+STEP 3: Configure .spec.config (2 min)
+   ↓
+STEP 4: Validate (5 min)
+   ↓
+STEP 5: Commit (3 min)
+   ↓
+   ✅ Technical setup complete
+   ↓
+STEP 6: Detect intention → Choose LITE or FULL (10 min)
+   ↓
+   ✅ DONE - Ready for EXECUTION
 ```
 
 ---

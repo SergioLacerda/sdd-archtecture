@@ -22,15 +22,51 @@ A complete framework for building software where:
 
 ---
 
-## 🚀 Quick Start — Choose Your Path
+## 🗺️ Project Organization
+
+**Everything in this framework is organized into clear flows:**
+
+- **INTEGRATION/:** Adding projects to the framework (30 min)
+- **EXECUTION/:** Developing with the framework (ongoing)
+- **context/:** Framework history & decisions (reference)
+
+---
+
+## 🎯 Step 0: Choose Your Adoption Path
+
+**Before you start, pick ONE:**
+
+### 🟢 LITE (15 min setup) — Learning & Small Teams
+- ✅ 10 core principles
+- ✅ 5 essential rules  
+- ✅ 10 DoD criteria
+- ✅ Perfect for: Learning, side projects, < 5 people
+- ✅ Upgrade to FULL anytime (30 min migration)
+
+→ **[LITE-ADOPTION.md](./EXECUTION/spec/guides/adoption/LITE-ADOPTION.md)**
+
+### 🔵 FULL (40 min setup) — Production & Mission-Critical
+- ✅ 15 complete principles
+- ✅ 16 mandatory rules
+- ✅ 45 DoD criteria + 7-phase workflow
+- ✅ Perfect for: Production teams, regulatory, autonomous agents
+- ✅ Real metrics & governance automation
+
+→ **[FULL-ADOPTION.md](./EXECUTION/spec/guides/adoption/FULL-ADOPTION.md)**
+
+**👉 Unsure?** Start with [adoption/INDEX.md](./EXECUTION/spec/guides/adoption/INDEX.md) — decision tree + comparison table
+
+---
+
+## 🚀 Quick Start — After Choosing Adoption Path
 
 **Decision Tree:**
 
 ### 🔷 **Are you adding a NEW project to SDD?**
-Yes → **[INTEGRATION/](./INTEGRATION/)** (30 minutes, 5 steps)
+Yes → **[INTEGRATION/](./INTEGRATION/)** (30 minutes, 5 steps) + your chosen adoption path
 
 ### 🔷 **Are you developing a feature/bug/improvement?**
-Yes → **[EXECUTION/](./EXECUTION/)** (ongoing, 7-phase workflow)
+Yes → **[EXECUTION/](./EXECUTION/)** (ongoing, 7-phase workflow with your adoption level)
 
 ### 🔷 **Are you an AI agent?**
 Yes → **[.ai-index.md](./.ai-index.md)** (machine-readable entry point)
@@ -40,7 +76,108 @@ Yes → **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**
 
 ---
 
-## 📚 Core Concepts
+## 🎯 Find Your Task (Quick Navigation)
+
+### I want to...
+
+| Task | Time | Go To |
+|------|------|-------|
+| **Learn about SDD** | 5-10 min | [README.md](./README.md) (you are here) |
+| **Add my project** | 30 min | [INTEGRATION/README.md](./INTEGRATION/README.md) → [INTEGRATION/CHECKLIST.md](./INTEGRATION/CHECKLIST.md) |
+| **Start developing** | 5 min | [EXECUTION/_START_HERE.md](./EXECUTION/_START_HERE.md) |
+| **Choose LITE vs FULL** | 5 min | [EXECUTION/spec/guides/adoption/INDEX.md](./EXECUTION/spec/guides/adoption/INDEX.md) |
+| **See our design** | 1 page | [context/analysis/CRITIQUE-RESPONSE-EXEC-SUMMARY.md](./context/analysis/CRITIQUE-RESPONSE-EXEC-SUMMARY.md) |
+| **Setup AI agent** | 5 min | [.ai-index.md](./.ai-index.md) |
+
+### By Role
+
+- **👨‍💼 Engineering Manager:** [INTEGRATION/README.md](./INTEGRATION/README.md) → Choose LITE/FULL → Ready
+- **👨‍💻 Developer:** [EXECUTION/_START_HERE.md](./EXECUTION/_START_HERE.md) → Pick adoption → Start coding
+- **🤖 AI Agent:** [.ai-index.md](./.ai-index.md) → Understand scope → [EXECUTION/](./EXECUTION/) flow
+- **🎓 Learner:** [EXECUTION/spec/guides/adoption/INDEX.md](./EXECUTION/spec/guides/adoption/INDEX.md) → Pick LITE/FULL → Learn at your pace
+
+---
+
+## 📁 Project Structure
+
+### Root (Entry Points Only)
+```
+/
+├── README.md                ← You are here (public facing)
+├── .ai-index.md            ← AI agents entry point
+├── LICENSE                 ← MIT license
+├── .spec.config            ← Framework config
+└── [configuration files]
+```
+
+### INTEGRATION Flow (Add Projects - 30 min)
+```
+INTEGRATION/
+├── README.md               ← Integration overview
+├── CHECKLIST.md            ← 6-step checklist
+├── STEP_1.md through STEP_6.md
+│   ├── STEP_1: Setup directories
+│   ├── STEP_2: Copy templates
+│   ├── STEP_3: Configure .spec.config
+│   ├── STEP_4: Validate
+│   ├── STEP_5: Commit
+│   └── STEP_6: Detect intention (5 questions → LITE/FULL)
+├── guides/
+│   ├── INDEX.md
+│   ├── INTENTION-DETECTION-CONCEPT.md
+│   └── V1-vs-V2-COMPARISON.md
+└── templates/
+    └── [setup files to copy]
+```
+
+### EXECUTION Flow (Develop - Ongoing)
+```
+EXECUTION/
+├── _START_HERE.md          ← Developer entry point
+├── spec/
+│   ├── CANONICAL/          ← Source of truth
+│   │   ├── rules/
+│   │   │   ├── constitution.md (15 principles)
+│   │   │   └── ia-rules.md (16 rules)
+│   │   ├── decisions/
+│   │   │   └── ADR_*.md (architecture decisions)
+│   │   └── specifications/
+│   │
+│   └── guides/
+│       ├── adoption/        ← LITE/FULL guides
+│       │   ├── LITE-ADOPTION.md (15 min, 10 DoD)
+│       │   ├── FULL-ADOPTION.md (40 min, 45 DoD)
+│       │   ├── LITE-TO-FULL-MIGRATION.md
+│       │   └── INDEX.md (compare paths)
+│       ├── operational/     ← How-to guides
+│       ├── reference/       ← FAQ & glossary
+│       └── emergency/       ← Troubleshooting
+```
+
+### Context (History & Analysis)
+```
+context/
+├── analysis/
+│   ├── CRITIQUE-RESPONSE-EXEC-SUMMARY.md
+│   ├── CRITIQUE-RESPONSE-COLD-REVIEW.md
+│   └── [other analysis]
+├── phases/
+│   └── [development history]
+└── detailed/
+    └── [full phase documentation]
+```
+
+### Which Directory?
+
+| Task | Directory | Start Here |
+|------|-----------|-----------|
+| Learn about SDD | Root | README.md |
+| AI agent setup | Root | .ai-index.md |
+| Add new project | INTEGRATION/ | README.md |
+| Start developing | EXECUTION/ | _START_HERE.md |
+| Choose adoption | EXECUTION/guides/adoption/ | INDEX.md |
+| Understand design | context/ | analysis/ |
+| Troubleshoot | EXECUTION/guides/emergency/ | README.md |
 
 ### Two Isolated Flows
 
@@ -58,41 +195,26 @@ Yes → **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**
 - **16 mandatory rules** ([ia-rules.md](./EXECUTION/spec/CANONICAL/rules/ia-rules.md))
 - **6 Architecture Decision Records** ([ADR-*](./EXECUTION/spec/CANONICAL/decisions/))
 
-### Technology-Agnostic
+### Current Implementation: Python + FastAPI
 
-Works with:
-- ✅ Python, JavaScript, Go, Rust, Java, C#...
-- ✅ Monoliths, microservices, serverless
-- ✅ Web, mobile, ML, infrastructure
-- ✅ Sync and async codebases
+**SDD v2.1 is built specifically for:**
+- ✅ **Python 3.11+** (async-first design)
+- ✅ **FastAPI** microservices architecture  
+- ✅ **Production-grade** async/await patterns
+- ✅ **AI-ready** governance framework
 
----
+**Core Principles are Language-Agnostic:**
+While the current implementation targets Python/FastAPI, the underlying principles are designed to be language-independent:
+- Clean Architecture (8 layers)
+- Async-first, event-driven design
+- Ports & Adapters pattern
+- Constitutional governance
 
-## 📖 Documentation Structure
-
-```
-sdd-architecture/
-│
-├── README.md (you are here - public facing)
-├── .ai-index.md (machine learning seed)
-├── .spec.config (framework reference)
-│
-├── INTEGRATION/                    ← Adding projects to framework
-│   ├── README.md
-│   ├── CHECKLIST.md
-│   ├── STEP_1 through STEP_5
-│   └── templates/
-│
-├── EXECUTION/                      ← Developing with framework
-│   ├── README.md
-│   ├── _START_HERE.md
-│   ├── NAVIGATION.md
-│   ├── docs/ia/CANONICAL/          ← Rules & specs
-│   ├── docs/ia/guides/             ← How-to guides
-│   └── docs/ia/custom/             ← Project specializations
-│
-└── docs/audit/                     ← Historical/session docs
-```
+**Future Roadmap:**
+- ⏳ v3.0: Multi-language support (planned)
+  - `sdd-nodejs/` — Express/Fastify + async
+  - `sdd-go/` — Gin + goroutines
+  - `sdd-rust/` — Tokio + async
 
 ---
 
@@ -103,30 +225,38 @@ sdd-architecture/
 - Agents can operate autonomously with clear rules
 - No ambiguous "best practices" — rules are explicit
 
+### �️ Flexible Governance
+- **LITE**: 10 principles + 5 rules + 10 DoD (entry point)
+- **FULL**: 15 principles + 16 rules + 45 DoD (production)
+- Start simple, upgrade when ready
+- Same architecture patterns, different enforcement levels
+
 ### 🏗️ Hierarchical Governance
 1. **Constitutional Layer** — Immutable (never changes)
-2. **Rules Layer** — Mandatory (always followed)
+2. **Rules Layer** — Mandatory (5 in LITE, 16 in FULL)
 3. **Architecture Layer** — Decisions (recorded why)
 4. **Specifications Layer** — How-to (practical patterns)
 5. **Guides Layer** — Operational (step-by-step)
 6. **Custom Layer** — Project-specific (personalization)
 
 ### ✅ Built-in Quality
-- Definition of Done: 45+ criteria
+- Definition of Done: 10 criteria (LITE) or 45+ (FULL)
 - Architecture compliance tests
 - Import structure validation
 - Pre-commit hooks for governance
-- Automated PHASE 0 setup
+- Automated setup (15 min for LITE, 40 min for FULL)
 
-### 📊 Measurable Outcomes
-- **First PR approval:** 90%+ (clear rules = fewer reviews)
-- **Implementation time:** -30% (no ambiguity)
-- **Knowledge retention:** 100% (documented decisions)
-- **Scaling difficulty:** Linear (not exponential)
+### 🎯 What We're Optimizing For
+- **Clarity:** No ambiguous "best practices" — rules are explicit
+- **Autonomy:** Developers operate confidently, less review overhead
+- **Auditability:** Every decision documented for agents + humans
+- **Scalability:** Works from 3-person to 300+ person teams
+
+*(Real metrics coming in v2.2 — we're tracking but not publishing yet)*
 
 ---
 
-## 🎯 For Different Roles
+## 👥 For Different Roles
 
 ### 👨‍💼 Engineering Managers
 - Predictable delivery timelines
@@ -162,18 +292,14 @@ sdd-architecture/
 
 ---
 
-## 📊 Proven Results
+## 🏆 Active Usage
 
-**In production at:**
-- 5+ projects (verified)
-- 3+ organizations (confirmed)
-- 100+ developer-hours (tested)
+**Currently running at:**
+- 5+ projects (internal + partner teams)
+- 3+ organizations (being tested)
+- 100+ developer-hours (in use)
 
-**Outcomes:**
-- ✅ 90%+ first-PR approval rate
-- ✅ ~30% faster implementation
-- ✅ 100% knowledge retention
-- ✅ 8.5+/10 quality score
+**Status:** Framework under active development. We're gathering real metrics for v2.2 (Q2 2026). Early adopters welcome — your feedback drives priorities.
 
 ---
 
@@ -221,7 +347,11 @@ cd /path/to/new-project
 
 ## 📝 License
 
-See [LICENSE](./LICENSE) file.
+![License](https://img.shields.io/badge/License-MIT-green)
+
+**MIT License** — Free to use, modify, and distribute in personal or commercial projects.
+
+See [LICENSE](./LICENSE) file for full text.
 
 ---
 
