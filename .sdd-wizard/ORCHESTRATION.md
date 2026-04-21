@@ -10,7 +10,7 @@ The Wizard is the **central orchestrator** that:
 1. Reads user input (language, mandates, profile)
 2. Loads SOURCE from `.sdd-core/` (validation)
 3. Reads COMPILED from `.sdd-runtime/` (binary)
-4. Applies SCAFFOLD from `.sdd-template/` (base files)
+4. Applies SCAFFOLD from `.sdd-wizard/templates/` (base files)
 5. Generates final TEMPLATE (filters & customizes)
 6. Outputs to CLIENT DELIVERY `.sdd/` (final product)
 
@@ -65,7 +65,7 @@ The Wizard is the **central orchestrator** that:
                 ↓ PHASE 5: APPLY SCAFFOLD
 ┌────────────────────────────────────────────────────┐
 │ Load Base Template                                 │
-│ • Copy .sdd-template/base/ files                   │
+│ • Copy .sdd-wizard/templates/base/ files                   │
 │ • Substitute PLACEHOLDERS:                         │
 │   - {{TIMESTAMP}} → current time                   │
 │   - {{SOURCE_HASH}} → hash of sources              │
@@ -88,9 +88,9 @@ The Wizard is the **central orchestrator** that:
 │ • Generate .sdd-guidelines/*.md files              │
 │ • Copy examples/ to .sdd/examples/                 │
 │ • Write metadata.json with compile info           │
-│ • Copy CI/CD workflows from .sdd-template/        │
+│ • Copy CI/CD workflows from .sdd-wizard/templates/        │
 │ • Add build files (pom.xml, requirements.txt, etc)│
-│ • Copy README-SDD.md from .sdd-template/base/     │
+│ • Copy README-SDD.md from .sdd-wizard/templates/base/     │
 └───────────────┬──────────────────────────────────────┘
                 │
                 ↓ PHASE 7: VALIDATE OUTPUT
@@ -156,7 +156,7 @@ The Wizard is the **central orchestrator** that:
 2. **Always Fresh**
    - Always reads latest .sdd-core/ (architect edits)
    - Always reads latest .sdd-runtime/ (compiled)
-   - Always uses latest .sdd-template/ (scaffolds)
+   - Always uses latest .sdd-wizard/templates/ (scaffolds)
 
 3. **Immutable Delivery**
    - Generated `.sdd/` is read-only for client

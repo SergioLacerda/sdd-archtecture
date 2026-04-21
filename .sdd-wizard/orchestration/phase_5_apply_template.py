@@ -1,6 +1,6 @@
 """Phase 5: Apply template scaffold and customizations
 
-Copies template files from .sdd-template/ and applies language/profile customizations
+Copies template files from .sdd-wizard/templates/ and applies language/profile customizations
 """
 
 from pathlib import Path
@@ -12,19 +12,19 @@ import json
 def _get_language_template_dir(language: str) -> Path:
     """Get language-specific template directory"""
     wizard_root = Path(__file__).parent.parent
-    return wizard_root.parent / ".sdd-template" / "languages" / language
+    return wizard_root / "templates" / "languages" / language
 
 
 def _get_profile_template_dir(profile: str) -> Path:
     """Get profile-specific template directory"""
     wizard_root = Path(__file__).parent.parent
-    return wizard_root.parent / ".sdd-template" / "profiles" / profile
+    return wizard_root / "templates" / "profiles" / profile
 
 
 def _get_base_template_dir() -> Path:
     """Get base template directory"""
     wizard_root = Path(__file__).parent.parent
-    return wizard_root.parent / ".sdd-template" / "base"
+    return wizard_root / "templates" / "base"
 
 
 def _copy_template_files(

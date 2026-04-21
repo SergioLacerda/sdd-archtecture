@@ -106,11 +106,11 @@
 │  └──────────────────────┬───────────────────────────────┘         │
 │                         │                                         │
 │  ┌─ PHASE 5: APPLY SCAFFOLD ───────────────────────────┐         │
-│  │ Load: .sdd-template/base/README-SDD.md               │         │
-│  │ Load: .sdd-template/base/metadata-template.json      │         │
+│  │ Load: .sdd-wizard/templates/base/README-SDD.md               │         │
+│  │ Load: .sdd-wizard/templates/base/metadata-template.json      │         │
 │  │ Load: .sdd-template/base/.github/workflows/*.yml     │         │
-│  │ Load: .sdd-template/languages/java/* (if java)       │         │
-│  │ Load: .sdd-template/profiles/lite/* (if lite)        │         │
+│  │ Load: .sdd-wizard/templates/languages/java/* (if java)       │         │
+│  │ Load: .sdd-wizard/templates/profiles/lite/* (if lite)        │         │
 │  │                                                       │         │
 │  │ Substitute Placeholders:                             │         │
 │  │ • {{TIMESTAMP}} → 2026-04-21T15:35:22Z              │         │
@@ -234,8 +234,8 @@ guidelines.dsl ──┼──→ On commit ──→ Compiler ────→ .
                                                                   ↓
                                                             Mandate Filter
                                                             Guideline Filter
-                                                            .sdd-template/
-.sdd-template/                                                    ↓
+                                                            .sdd-wizard/templates/
+.sdd-wizard/templates/                                                    ↓
 (base files)  ─────────────────────────────────────────→ PHASE 3-5
                                                         (Filter & Scaffold)
                                                                   ↓
@@ -515,7 +515,7 @@ $ cat .sdd/metadata.json | jq .
 [PHASE 3-5: FILTER & SCAFFOLD]
   ├─→ Filter mandates by user choice
   ├─→ Filter guidelines by language + profile
-  ├─→ Load .sdd-template/ scaffolds
+  ├─→ Load .sdd-wizard/templates/ scaffolds
   ├─→ Substitute placeholders
   ├─→ Error? → [ERROR STATE] → STOP
   │

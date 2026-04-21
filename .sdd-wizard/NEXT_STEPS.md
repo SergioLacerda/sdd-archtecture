@@ -253,7 +253,7 @@ Output: Filtered guideline list
 
 **Phase 5: Apply Scaffold**
 ```
-Input: .sdd-template/base/ files, metadata
+Input: .sdd-wizard/templates/base/ files, metadata
 - Load README-SDD.md, metadata-template.json, CI/CD workflow
 - Substitute {{PLACEHOLDER}} with actual values
 - {{LANGUAGE}}, {{PROFILE}}, {{MANDATES}}, {{TIMESTAMP}}

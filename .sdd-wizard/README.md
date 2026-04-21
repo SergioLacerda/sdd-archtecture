@@ -105,7 +105,7 @@ Phase 1: VALIDATE SOURCE          → Check .sdd-core/ integrity
 Phase 2: LOAD COMPILED            → Read .sdd-runtime/ binary
 Phase 3: FILTER MANDATES          → User selects which mandates
 Phase 4: FILTER GUIDELINES        → Filter by language + profile
-Phase 5: APPLY SCAFFOLD           → Load .sdd-template/ base
+Phase 5: APPLY SCAFFOLD           → Load .sdd-wizard/templates/ base
 Phase 6: GENERATE PROJECT         → Create directory structure
 Phase 7: VALIDATE OUTPUT          → Verify deliverable
 ```
@@ -128,7 +128,7 @@ Each phase:
 ✅ **Always Fresh**
 - Always reads latest .sdd-core/
 - Always reads latest .sdd-runtime/
-- Uses latest .sdd-template/
+- Uses latest .sdd-wizard/templates/
 
 ✅ **Immutable Delivery**
 - Generated `.sdd/` is read-only
@@ -206,7 +206,7 @@ USER INPUT (wizard prompts)
 Phase 1-2: LOAD ARTIFACTS
     ├─ .sdd-core/ (SOURCE)
     ├─ .sdd-runtime/ (COMPILED)
-    └─ .sdd-template/ (SCAFFOLD)
+    └─ .sdd-wizard/templates/ (SCAFFOLD)
     ↓
 Phase 3-4: FILTER
     ├─ Mandate selection (user chooses)
@@ -246,9 +246,9 @@ OUTPUT: /path/to/my-project/
 - `.sdd-runtime/mandate.bin` (COMPILED - CI/CD generates)
 - `.sdd-runtime/guidelines.bin` (COMPILED - CI/CD generates)
 - `.sdd-runtime/metadata.json` (METADATA - CI/CD generates)
-- `.sdd-template/base/` (SCAFFOLD - part of wizard)
-- `.sdd-template/profiles/` (SCAFFOLD - part of wizard)
-- `.sdd-template/languages/` (SCAFFOLD - part of wizard)
+- `.sdd-wizard/templates/base/` (SCAFFOLD - part of wizard)
+- `.sdd-wizard/templates/profiles/` (SCAFFOLD - part of wizard)
+- `.sdd-wizard/templates/languages/` (SCAFFOLD - part of wizard)
 
 ### Writes TO:
 - `{output_dir}/.sdd/CANONICAL/` (filtered specs)
