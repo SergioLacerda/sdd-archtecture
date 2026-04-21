@@ -1,0 +1,2 @@
+EXECUTION/spec/CANONICAL/rules/constitution.md
+EXECUTION/spec/guides/
