@@ -17,7 +17,7 @@
 
 ---
 
-### 🔄 Em Progresso (Week 3)
+### 2️⃣ Em Progresso (Week 3)
 
 #### 1. **RTK Expansion: 10 → 50+ Patterns**
 Status: 20/20 tests passing ✅
@@ -28,18 +28,21 @@ Status: 20/20 tests passing ✅
 ├── Category D: Data Type (12 patterns)
 ├── Category E: Message (8 patterns)
 └── Category F: Metadata (7 patterns)
-   Total: 50+ patterns for 90% coverage
+   Total: 50+ patterns for testing
 ```
 
-#### 2. **Real Telemetry Integration** 🆕
-Status: Ready (guide created)
+#### 2. **Real Telemetry Integration** (v3.2+)
+Status: ⏳ Planned for future releases
 ```
-├── Fase 1: Coletar 1000+ eventos reais
-├── Fase 2: Pattern Matching nos 50+ padrões
-├── Fase 3: Análise de cobertura (target: 90%)
-├── Fase 4: Medir compressão real
-├── Fase 5: Identificar gaps
-└── Fase 6: Criar novos padrões & otimizar
+├── Fase 1: Coletar 1000+ eventos reais (future)
+├── Fase 2: Pattern Matching nos 50+ padrões (future)
+├── Fase 3: Análise de cobertura (future)
+├── Fase 4: Medir compressão real (future)
+├── Fase 5: Identificar gaps (future)
+└── Fase 6: Criar novos padrões & otimizar (future)
+
+Note: Real data collection will happen in v3.2+ 
+with your projects as validation source
 ```
 
 #### 3. **MessagePack Binary Format**

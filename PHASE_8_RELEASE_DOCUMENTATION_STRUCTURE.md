@@ -1,8 +1,9 @@
 # SDD Release v3.1 - Documentation Organization Guide
 
-## 📦 Estrutura para Release Futura
+## 📦 Estrutura para v3.1-beta.1 + Futuro
 
-This document shows HOW to organize and package SDD v3.1 for release, based on your 3-step real-world validation strategy.
+This document shows HOW to organize and package SDD v3.1 for release.
+**Note:** Phases 0-3 for v3.1-beta.1 (now). Phase 4+ for v3.2+ (future with real data).
 
 ---
 
@@ -46,14 +47,14 @@ sdd-release-v3.1/
 │   │       ├── game-master-api.md
 │   │       └── rpg-narrative-server.md
 │   │
-│   └── PHASE_4_DEPLOYMENT/              ⭐ YOUR REAL-WORLD DATA GOES HERE
-│       ├── SDD-Wizard.md                (Auto-setup for your projects)
-│       ├── Telemetry-Collection.md      (Hooks & instrumentation)
-│       ├── Metrics-Dashboard.md         (Understanding your metrics)
+│   └── PHASE_4_DEPLOYMENT/ (v3.2+ - Future)
+│       ├── SDD-Wizard.md                (Auto-setup - future feature)
+│       ├── Telemetry-Collection.md      (Instrumentation - future)
+│       ├── Metrics-Dashboard.md         (Analytics - future)
 │       ├── Troubleshooting.md
 │       ├── Migration-Guide.md
-│       └── CASE_STUDIES/
-│           ├── Project-1-Results.md     (Your payment API, payment-pipeline, etc)
+│       └── CASE_STUDIES/ (v3.2+ - Real data)
+│           ├── Project-1-Results.md     (Future with real metrics)
 │           ├── Project-2-Results.md
 │           └── Project-3-Results.md
 │
@@ -406,27 +407,33 @@ ADDITIONAL
 
 ## 🚀 How to Use This Guide
 
-### For v3.1-beta.1 Release:
+### For v3.1-beta.1 Release (This Week):
 
 1. **Create Release Directory**
    ```bash
    mkdir -p sdd-v3.1-beta.1/
-   cp -r documentation/ sdd-v3.1-beta.1/
-   cp -r modules/ sdd-v3.1-beta.1/
-   cp -r tools/ sdd-v3.1-beta.1/
+   cp -r documentation/ sdd-v3.1-beta.1/      # Phases 0-3 only
+   cp -r modules/ sdd-v3.1-beta.1/            # RTK, Compiler, Extensions
    ```
 
-2. **Fill in Your Case Studies**
-   - Run wizard on your projects
-   - Collect real metrics
-   - Fill in template sections with YOUR data
+2. **What's Included:**
+   - ✅ Phase 0: Vision & Architecture (mandate.spec, guidelines.dsl)
+   - ✅ Phase 1: RTK 50+ patterns
+   - ✅ Phase 2: DSL Compiler + MessagePack
+   - ✅ Phase 3: Extensions Framework + 2 examples
+   - ✅ Complete API References & Examples
 
-3. **Generate Package**
+3. **What's NOT Included (Future v3.2+):**
+   - ❌ Phase 4: SDD Wizard
+   - ❌ Case studies (will add with real data in v3.2)
+   - ❌ Live metrics (future releases)
+
+4. **Generate Package**
    ```bash
-   python release-builder.py --version 3.1-beta.1 --output sdd-v3.1-beta.1.tar.gz
+   tar -czf sdd-v3.1-beta.1.tar.gz sdd-v3.1-beta.1/
    ```
 
-4. **Release!**
+5. **Release!**
    - GitHub release
    - Documentation site
    - Community announcement
@@ -453,11 +460,17 @@ ADDITIONAL
 
 ## ✨ Next Steps
 
-To start building toward v3.1 release:
+### v3.1-beta.1 Release (THIS WEEK)
+1. **Finalize:** Phases 0-3 documentation
+2. **Package:** RTK + Compiler + Extensions modules
+3. **Release:** v3.1-beta.1 to GitHub/community
 
-1. **Week 2-3:** Build the SDD Wizard (auto-detect, generate mandates, instrument telemetry)
-2. **Week 3-4:** Run wizard on first project, collect baseline + live metrics
-3. **Week 4-5:** Repeat on 2-3 more projects, discover new patterns
-4. **Week 5-6:** Document everything in this structure, release v3.1-beta.1
+### v3.2+ Release (FUTURE - When Ready)
+1. **Implement:** SDD Wizard (auto-detect, setup)
+2. **Collect:** Real telemetry from your projects
+3. **Document:** Case studies with metrics
+4. **Release:** v3.2 with proven real-world validation
 
-**Your Real Projects** → **Real Data** → **Real Case Studies** → **Confident Release** 🎉
+**Approach:**
+- v3.1-beta.1: Rock-solid core (111/111 tests) ✅
+- v3.2: Enhanced with automation + validation ✨

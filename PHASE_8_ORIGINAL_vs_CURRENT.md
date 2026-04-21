@@ -140,48 +140,36 @@ Target: Framework para specializations
 
 ---
 
-## 🆕 Novos Elementos (Não no Planejamento Original)
+## � Foco: Planejamento Original Apenas
 
-### 1. Real Telemetry Integration (Week 2-3 do Revised Plan)
+### Escopo Final = Planejamento Original
 ```
-❌ Original: Não havia plano específico
-✅ Adicionado: 6-phase validation process
-   - Coletar 1000+ eventos reais
-   - Pattern matching
-   - Coverage analysis
-   - Compression measurement
-   - Gap identification
-   - Optimization
+✅ Workstream 1: RTK (50+ patterns) - COMPLETO
+✅ Workstream 2: Binary Compilation (MessagePack) - COMPLETO
+✅ Workstream 4: Extensions - COMPLETO
+🚫 Workstream 3: Web Dashboard - REMOVIDO (consciente, não é novo passo)
+
+NO ADDITIONAL ITEMS BEYOND ORIGINAL PLANNING
 ```
 
-**Adicionado em:** PHASE_8_REVISED_PLAN.md quando começou execução
-
----
-
-### 2. SDD Wizard (NOVO - Week 2-3 Forward)
+### ⏳ Para Releases Futuras (Fora do Scope v3.1-beta.1)
 ```
-❌ Original: Não existia
-✅ Adicionado: Auto-detection + setup
-   - ProjectDetector (Python, Node, Go, Java, Rust)
-   - MandateGenerator (cria M001-M010)
-   - TelemetryInstrumentor (adds hooks)
-   - Ready for your projects
-```
+❌ NÃO incluir em v3.1-beta.1:
+   - SDD Wizard automation
+   - Real telemetry collection from user projects
+   - Case studies with real metrics
+   - Performance benchmarks with live data
 
-**Adicionado em:** PHASE_8_RELEASE_STRATEGY (TODAY)
-
----
-
-### 3. 3-Step Real Validation Strategy
-```
-❌ Original: Synthetic testing only
-✅ Adicionado: Real data from your projects
-   Phase 0: Core implementation (111/111 tests)
-   Phase 1: SDD Wizard deployment
-   Phase 2: Real metrics from YOUR code
+✅ PARA v3.2 ou releases futuras:
+   - SDD Wizard deployment automation
+   - Real-world metrics collection
+   - Case study documentation
+   - Live performance validation
 ```
 
-**Adicionado em:** PHASE_8_RELEASE_STRATEGY (TODAY)
+### Razão
+**Manter foco no escopo original garante qualidade e entrega.**
+Extensões podem vir em releases futuras quando core está validado.
 
 ---
 

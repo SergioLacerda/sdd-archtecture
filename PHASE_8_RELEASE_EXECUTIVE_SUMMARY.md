@@ -1,31 +1,25 @@
 # SDD v3.1 Release - Executive Summary & Documentation Index
 
-## 🎯 Sua Estratégia (3 Etapas) - Confirmada ✅
+## 🎯 Escopo: Planejamento Original Confirmado ✅
 
 **Pergunta Original:** "Quando falamos em 'dados' reais, seriam equivalentes aos meus projetos? Caso sim, organizar a documentação atual para uma release futura!"
 
-**Resposta:** ✅ SIM! Seus projetos reais = dados de telemetry reais para validar SDD.
+**Resposta:** ✅ SIM! Seus projetos são o case de uso perfeito - MAS para releases futuras.
 
 ```
-Phase 0: ✅ Refatoração Atual (COMPLETA)
-         - RTK 50+ patterns
-         - DSL Compiler
-         - MessagePack Binary
-         - Extensions Framework
+v3.1-beta.1 (Week 1-4): ✅ PLANEJAMENTO ORIGINAL
+         - RTK 50+ patterns ✅
+         - DSL Compiler ✅
+         - MessagePack Binary ✅
+         - Extensions Framework ✅
          - 111/111 testes ✅
+         └─ Completo, testado, release-ready
 
-Phase 1: 🔄 SDD Wizard (PRÓXIMA - Week 2-3)
-         - Auto-detect seu project type
-         - Gerar mandates/guidelines específicos
-         - Instrumentar com telemetry
-         - Baseado em dados reais do seu projeto
-
-Phase 2: 📊 Real Metrics (Week 3-6)
-         - Rodar seu app com SDD ativado
-         - Coletar 10,000+ eventos REAIS
-         - Medir compressão REAL (65-75%)
-         - Validar 90% pattern coverage
-         - Criar case studies com SEUS dados!
+v3.2+ (Futuro): 🔄 REAL DATA VALIDATION
+         - SDD Wizard (auto-detect, setup)
+         - Coletar dados reais de seus projetos
+         - Case studies com métricas reais
+         - Performance validation com live data
 ```
 
 ---
@@ -61,44 +55,43 @@ Phase 2: 📊 Real Metrics (Week 3-6)
 
 ---
 
-### 3️⃣ PHASE_8_SDD_WIZARD_SPECIFICATION.md
-**O QUÊ:** Especificação técnica do SDD Wizard a ser implementado
+### 3️⃣ PHASE_8_SDD_WIZARD_SPECIFICATION.md (v3.2+)
+**O QUÊ:** Especificação técnica do SDD Wizard (para releases futuras)
 
 **CONTÉM:**
-- 🔧 Arquitetura completa do wizard
-- 📋 Fluxo exato do CLI interativo
-- 🧪 Casos de teste esperados (20+)
+- 🔧 Arquitetura completa do wizard (roadmap)
+- 📋 Fluxo exato do CLI interativo (blueprint)
+- 🧪 Casos de teste esperados (planejamento)
 - 📊 Estrutura de saída após wizard rodar
-- 🚀 Próximos passos em sequência (Week by week)
+- 🚀 Próximos passos em sequência
 
-**PRÓXIMO PASSO:** Usar para implementar o wizard em Week 2-3
+**NOTA:** Documentação para v3.2+, NÃO incluida em v3.1-beta.1
 
 ---
 
-## 🗺️ Como Navegar a Documentação
+## 🗺️ Documentação para v3.1-beta.1
 
 ```
-Para ENTENDER a estratégia:
-1. Leia: PHASE_8_REAL_WORLD_VALIDATION_STRATEGY.md
-   └─ Entenda: Por que seus projetos = dados reais?
-   └─ Exemplo: Payment API case study (hypothetical)
-
-Para IMPLEMENTAR o wizard:
-2. Leia: PHASE_8_SDD_WIZARD_SPECIFICATION.md
-   └─ Aprenda: Como detectar tipo de projeto
-   └─ Aprenda: Como gerar mandates/guidelines
-   └─ Aprenda: Como instrumentar com telemetry
+Para ENTENDER o escopo:
+1. PHASE_8_ORIGINAL_vs_CURRENT.md
+   └─ Reconciliação: O que foi planejado vs o que foi feito
 
 Para ORGANIZAR a release:
-3. Leia: PHASE_8_RELEASE_DOCUMENTATION_STRUCTURE.md
-   └─ Use templates para case studies
-   └─ Copie estrutura de diretórios
-   └─ Preencha com dados dos SEUS projetos
+2. PHASE_8_RELEASE_DOCUMENTATION_STRUCTURE.md
+   └─ Estrutura: Como empacotar v3.1-beta.1
+
+Para VISÃO FUTURA (v3.2+):
+3. PHASE_8_SDD_WIZARD_SPECIFICATION.md
+   └─ Roadmap: Base para implementações futuras
+
+Para REFERENCIAS:
+4. PHASE_8_REAL_WORLD_VALIDATION_STRATEGY.md
+   └─ Contexto: Estratégia original (future iterations)
 ```
 
 ---
 
-## 📅 Timeline Visual
+## 📅 Timeline: v3.1-beta.1
 
 ```
 Week 1-2 (✅ DONE)
@@ -107,32 +100,19 @@ Week 1-2 (✅ DONE)
   ✅ MessagePack
   ✅ Extensions
 
-Week 2-3 (🔄 NEXT)
-  ⏳ Implement SDD Wizard
-  ⏳ Create CLI & templates
-  ⏳ Build telemetry hooks
-  ⏳ 20+ tests for wizard
+Week 2-3 (🔄 FINALIZE)
+  ⏳ Complete documentation
+  ⏳ Final testing & validation
+  ⏳ Release package assembly
 
-Week 3-4 (YOUR PROJECT #1)
-  ⏳ Run wizard on project
-  ⏳ Collect baseline metrics
-  ⏳ Refactor with SDD
-  ⏳ Live telemetry 2 weeks
-  ⏳ Document case study
+Week 3-4 (🎁 RELEASE)
+  ⏳ v3.1-beta.1 published
+  ⏳ Community feedback collection
 
-Week 4-5 (YOUR PROJECTS #2-3)
-  ⏳ Repeat for 2 more projects
-  ⏳ Cross-project analysis
-  ⏳ Discover new patterns
-
-Week 5-6 (RELEASE PREP)
-  ⏳ Finalize all documentation
-  ⏳ Consolidate case studies
-  ⏳ Release v3.1-beta.1
-
-Week 6+ (COMMUNITY FEEDBACK)
-  ⏳ Gather feedback
-  ⏳ v3.1-rc.1 → v3.1.0 stable
+=== FUTURE (v3.2+) ===
+  ⏳ SDD Wizard implementation
+  ⏳ Real telemetry collection
+  ⏳ Case studies with metrics
 ```
 
 ---
@@ -198,24 +178,18 @@ Total: 111/111 tests passing ✅
 
 ---
 
-## 🚀 Immediate Next Steps
+## 🚀 Próximos Passos (v3.1-beta.1 Scope)
 
 ### RIGHT NOW:
-1. ✅ Confirmed: Use your real projects as telemetry data
-2. ✅ Created: Strategy document
-3. ✅ Created: Documentation structure template
-4. ✅ Created: Wizard specification
+1. ✅ Confirmado: Foco em escopo original (RTK + Compiler + Extensions)
+2. ✅ Finalizar documentação para v3.1-beta.1
+3. ✅ Preparar release package
 
-### WEEK 2-3:
-1. Build SDD Wizard (follow PHASE_8_SDD_WIZARD_SPECIFICATION.md)
-2. Test on your first project
-3. Collect baseline metrics
-
-### WEEK 3-6:
-1. Run on your projects
-2. Collect real data
-3. Document case studies
-4. Release v3.1-beta.1
+### DEPOIS (v3.2+):
+1. SDD Wizard (auto-detect project type, setup)
+2. Real telemetry collection from your projects
+3. Case studies with real metrics
+4. Performance validation with live data
 
 ---
 
@@ -238,9 +212,9 @@ Total: 111/111 tests passing ✅
 
 ---
 
-## 🎁 What You're Getting
+## 🎁 What v3.1-beta.1 Will Have
 
-### For Release v3.1-beta.1:
+### Release Package:
 
 ```
 sdd-v3.1-beta.1/
@@ -249,23 +223,23 @@ sdd-v3.1-beta.1/
 │   ├── Phase 1: RTK (50+ patterns, API reference)
 │   ├── Phase 2: Compiler (DSL syntax, examples)
 │   ├── Phase 3: Extensions (framework, examples)
-│   └── Phase 4: Deployment
-│       └── 📊 CASE_STUDIES/
-│           ├── Your Project 1 (REAL DATA! ✨)
-│           ├── Your Project 2 (REAL DATA! ✨)
-│           └── Your Project 3 (REAL DATA! ✨)
+│   └── QUICK_START.md & Migration Guide
 │
-├── 🧙 SDD-WIZARD/
-│   ├── Auto-detect project type
-│   ├── Generate mandates/guidelines
-│   └── Instrument with telemetry
+├── 🔧 CORE MODULES/
+│   ├── .sdd-rtk/ (50+ patterns, O(1) matching)
+│   ├── .sdd-compiler/ (DSL → MessagePack)
+│   ├── .sdd-extensions/ (Framework + 2 examples)
+│   └── All tests: 111/111 passing ✅
 │
-├── 🔧 TOOLS/
-│   ├── sdd-wizard.py
-│   ├── sdd-collect.py
-│   └── sdd-analyze.py
-│
-└── ✅ All 111 tests passing
+└── ✅ COMPLETE
+    └── No placeholders, everything tested & ready
+```
+
+**NOT in v3.1-beta.1 (Future Releases):**
+```
+❌ SDD Wizard (→ v3.2)
+❌ Case studies with real metrics (→ v3.2)
+❌ Live telemetry collection (→ v3.2)
 ```
 
 ---
@@ -309,14 +283,23 @@ This is WAY better than synthetic test data for validating SDD! 🚀
 
 ---
 
-## 🎬 Ready to Start?
+## 🎬 Próxima Ação
 
-**Next Action:** Implement SDD Wizard (Week 2-3)
+**Week 2-3:** Finalizar documentação e preparar v3.1-beta.1
 
-Follow: `PHASE_8_SDD_WIZARD_SPECIFICATION.md`
+Prioridade:
+1. ✅ Escopo: Confirmar que apenas workstreams originais entram
+2. ✅ Documentação: Revisar e completar
+3. ✅ Release: Empacotar tudo
+
+---
+
+**Roadmap Futuro (v3.2+):**
+
+Implement SDD Wizard com base em: `PHASE_8_SDD_WIZARD_SPECIFICATION.md`
 
 ---
 
 **Created:** April 21, 2026
-**Status:** Ready for Phase 1 (SDD Wizard Implementation)
-**Goal:** v3.1-beta.1 release with real-world validation from your projects ✨
+**Status:** v3.1-beta.1 ready, scope confirmed to original planning
+**Goal:** Release core components (RTK + Compiler + Extensions) - all working 111/111 ✅
