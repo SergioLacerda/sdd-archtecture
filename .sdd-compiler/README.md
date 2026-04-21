@@ -74,7 +74,7 @@ from .src.dsl_compiler import compile_file, compile_string
 
 # Compile from file
 metrics = compile_file(
-    ".sdd-core/CANONICAL/mandate.spec",
+    ".sdd-core/mandate.spec",
     "mandate.spec.compiled.json"
 )
 
@@ -98,7 +98,7 @@ print(f"Compression: {metrics.compression_ratio:.1%}")
 
 ```bash
 # Compile single file
-python -m .sdd-compiler.src.dsl_compiler .sdd-core/CANONICAL/mandate.spec
+python -m .sdd-compiler.src.dsl_compiler .sdd-core/mandate.spec
 
 # Compile with custom output
 python -m .sdd-compiler.src.dsl_compiler \

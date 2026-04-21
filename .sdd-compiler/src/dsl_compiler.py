@@ -503,8 +503,8 @@ if __name__ == "__main__":
         print("Usage: python dsl_compiler.py <input.spec|.dsl> [output.json]")
         print()
         print("Examples:")
-        print("  python dsl_compiler.py .sdd-core/CANONICAL/mandate.spec")
-        print("  python dsl_compiler.py .sdd-guidelines/guidelines.dsl output.json")
+        print("  python dsl_compiler.py .sdd-core/mandate.spec")
+        print("  python dsl_compiler.py .sdd-core/guidelines.dsl output.json")
         sys.exit(1)
     
     input_file = sys.argv[1]
