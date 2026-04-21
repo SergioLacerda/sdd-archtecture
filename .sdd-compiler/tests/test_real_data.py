@@ -11,16 +11,17 @@ Tests:
 import sys
 from pathlib import Path
 
-# Add compiler to path
-sys.path.insert(0, str(Path(__file__).parent))
+# Add compiler src to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from .src.dsl_compiler import compile_file
+from src.dsl_compiler import compile_file
+
 
 def test_real_files():
     """Test compilation on real SDD v3.0 files"""
     
     files_to_compile = [
-        (".sdd-core/CANONICAL/mandate.spec", "mandate.spec.compiled.json"),
+        (".sdd-core/mandate.spec", "mandate.spec.compiled.json"),
         (".sdd-guidelines/guidelines.dsl", "guidelines.dsl.compiled.json"),
     ]
     
@@ -74,6 +75,7 @@ def test_real_files():
             print("✅ PASSED: Compression ratio ≥ 65%")
         else:
             print(f"⚠️  WARNING: Compression ratio {total_compression:.1%} < target 65%")
+
 
 if __name__ == "__main__":
     test_real_files()

@@ -49,7 +49,8 @@ class ArtifactLoader:
             return json.loads(mandate_json.read_text(encoding='utf-8'))
         
         raise FileNotFoundError(
-            f"Compiled mandate not found. Run: python integrate.py\n"
+            f"Compiled mandate not found.\n"
+            f"Run: python .sdd-compiler/compiler.py (from repository root)\n"
             f"Expected: .sdd-runtime/mandate.bin or .sdd-runtime/mandate.json"
         )
     
@@ -71,7 +72,8 @@ class ArtifactLoader:
             return json.loads(guidelines_json.read_text(encoding='utf-8'))
         
         raise FileNotFoundError(
-            f"Compiled guidelines not found. Run: python integrate.py\n"
+            f"Compiled guidelines not found.\n"
+            f"Run: python .sdd-compiler/compiler.py (from repository root)\n"
             f"Expected: .sdd-runtime/guidelines.bin or .sdd-runtime/guidelines.json"
         )
     

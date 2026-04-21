@@ -24,6 +24,13 @@ try:
 except ImportError:
     HAS_MSGPACK = False
 
+# Import Runtime Telemetry Kit sub-layer for telemetry deduplication
+try:
+    from .runtime_telemetry_kit import DeduplicationEngine, PatternRegistry
+    HAS_RTK = True
+except ImportError:
+    HAS_RTK = False
+
 
 @dataclass
 class CompilationMetrics:
@@ -36,6 +43,8 @@ class CompilationMetrics:
     guidelines_compiled: int = 0
     unique_strings: int = 0
     errors: List[str] = field(default_factory=list)
+    rtk_compression_ratio: float = 0.0  # RTK sub-layer compression
+    rtk_patterns_matched: int = 0       # Number of patterns matched by RTK
     
     @property
     def compression_ratio(self) -> float:
