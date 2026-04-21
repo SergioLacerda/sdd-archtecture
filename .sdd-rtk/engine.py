@@ -49,62 +49,78 @@ class PatternRegistry:
         self._load_patterns()
     
     def _load_patterns(self) -> None:
-        """Load initial v3.1 patterns"""
-        # Structural Patterns (Category A)
-        self._add_pattern(
-            "TS001",
-            "ISO 8601 Timestamp",
-            regex=r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?$",
-            fields=["timestamp", "created_at", "updated_at"],
-            compression_ratio=0.15,
-            frequency=0.95
-        )
+        """Load v3.1 patterns (50+ for 90% coverage)"""
+        # Import extended patterns
+        try:
+            from patterns import ExtendedPatterns
+            all_patterns = ExtendedPatterns.get_all_patterns()
+        except ImportError:
+            # Fallback to basic patterns if patterns.py not available
+            all_patterns = self._get_basic_patterns()
         
+        # Load all patterns
+        for pattern_id, pattern_info in all_patterns.items():
+            self._add_pattern_from_dict(pattern_id, pattern_info)
+    
+    def _get_basic_patterns(self) -> Dict[str, Dict[str, Any]]:
+        """Get basic patterns for fallback"""
+        return {
+            "TS001": {
+                "name": "ISO 8601 Timestamp",
+                "regex": r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?$",
+                "fields": ["timestamp", "created_at", "updated_at"],
+                "compression_ratio": 0.15,
+                "frequency": 0.95,
+            },
+            "SRV01": {
+                "name": "Service Header",
+                "regex": r"^(sdd-api|sdd-core|sdd-extensions|sdd-dashboard)$",
+                "fields": ["service"],
+                "compression_ratio": 0.20,
+                "frequency": 0.90,
+            },
+            "VER01": {
+                "name": "Version String",
+                "regex": r"^\d+\.\d+\.\d+",
+                "fields": ["version"],
+                "compression_ratio": 0.18,
+                "frequency": 0.95,
+            },
+            "ST001": {
+                "name": "HTTP Status Code",
+                "values": [200, 201, 204, 400, 401, 403, 404, 500, 502, 503],
+                "fields": ["status", "http_code"],
+                "compression_ratio": 0.05,
+                "frequency": 0.80,
+            },
+            "ERR001": {
+                "name": "Connection Timeout",
+                "regex": r"Connection timeout at .+:\d+",
+                "fields": ["error_message"],
+                "compression_ratio": 0.15,
+                "frequency": 0.12,
+            },
+            "UUID001": {
+                "name": "UUID Format",
+                "regex": r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "fields": ["id", "entity_id", "trace_id", "request_id"],
+                "compression_ratio": 0.44,
+                "frequency": 0.70,
+            },
+        }
+    
+    def _add_pattern_from_dict(
+        self, pattern_id: str, pattern_info: Dict[str, Any]
+    ) -> None:
+        """Add pattern from dictionary"""
         self._add_pattern(
-            "SRV01",
-            "Service Header",
-            regex=r"^(sdd-api|sdd-core|sdd-extensions|sdd-dashboard)$",
-            fields=["service"],
-            compression_ratio=0.20,
-            frequency=0.90
-        )
-        
-        self._add_pattern(
-            "VER01",
-            "Version String",
-            regex=r"^\d+\.\d+\.\d+",
-            fields=["version"],
-            compression_ratio=0.18,
-            frequency=0.95
-        )
-        
-        # Data Patterns (Category B)
-        self._add_pattern(
-            "ST001",
-            "HTTP Status Code",
-            values=[200, 201, 204, 400, 401, 403, 404, 500, 502, 503],
-            fields=["status", "http_code"],
-            compression_ratio=0.05,
-            frequency=0.80
-        )
-        
-        self._add_pattern(
-            "ERR001",
-            "Connection Timeout",
-            regex=r"Connection timeout at .+:\d+",
-            fields=["error_message"],
-            compression_ratio=0.15,
-            frequency=0.12
-        )
-        
-        # Semantic Patterns (Category C)
-        self._add_pattern(
-            "UUID001",
-            "UUID Format",
-            regex=r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-            fields=["id", "entity_id", "trace_id", "request_id"],
-            compression_ratio=0.44,
-            frequency=0.70
+            pattern_id,
+            pattern_info.get("name", "Unknown"),
+            regex=pattern_info.get("regex"),
+            values=pattern_info.get("values"),
+            fields=pattern_info.get("fields", []),
+            compression_ratio=pattern_info.get("compression_ratio", 0.0),
+            frequency=pattern_info.get("frequency", 0.0),
         )
     
     def _add_pattern(
