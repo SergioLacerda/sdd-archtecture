@@ -391,6 +391,34 @@ sdd governance generate
 
 ---
 
+## 🏥 Operations & Production
+
+**Running SDD in production? Start here:**
+
+| Need | Guide | Time |
+|------|-------|------|
+| **Operational overview** | [.sdd-core/OPERATIONS-INDEX.md](./.sdd-core/OPERATIONS-INDEX.md) | 10 min |
+| **Daily operations** | [.sdd-core/OPERATIONS.md](./.sdd-core/OPERATIONS.md) | Ongoing |
+| **Deploy to production** | [.sdd-core/DEPLOYMENT.md](./.sdd-core/DEPLOYMENT.md) | 30-50 min |
+| **Monitor system health** | [.sdd-core/MONITORING.md](./.sdd-core/MONITORING.md) | Ongoing |
+| **Maintenance & upkeep** | [.sdd-core/MAINTENANCE.md](./.sdd-core/MAINTENANCE.md) | Scheduled |
+
+**Quick reference:**
+```bash
+# Health check
+./scripts/health-check.sh
+
+# Governance validation
+sdd governance validate
+
+# Load configuration
+sdd governance load
+```
+
+→ **Full operations guide:** [.sdd-core/OPERATIONS-INDEX.md](./.sdd-core/OPERATIONS-INDEX.md)
+
+---
+
 ## 📝 License
 
 ![License](https://img.shields.io/badge/License-MIT-green)
