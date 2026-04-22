@@ -37,11 +37,11 @@ All notable changes to this project will be documented in this file.
 - **Tests:** 15/15 passing
 
 **PHASE 4: Deployment** ✅
-- Deployed compiled artifacts to `.sdd-runtime/compiled/`
+- Deployed compiled artifacts to `.sdd-wizard/compiled/`
 - Backup management for existing files
 - Deployment verification and checklist
 - Manifest generation with deployment metadata
-- **Outputs:** Copied to .sdd-runtime/compiled/ with backups
+- **Outputs:** Copied to .sdd-wizard/compiled/ with backups
 - **Tests:** 16/16 passing
 - **Status:** ✅ Ready for wizard and agent runtime integration
 
@@ -55,7 +55,7 @@ All notable changes to this project will be documented in this file.
 - Customizable client allows organizational adaptation
 
 **PHASE 5: Wizard Integration** ✅
-- **Runtime Loader:** Load compiled msgpack artifacts from .sdd-runtime/
+- **Runtime Loader:** Load compiled msgpack artifacts from .sdd-wizard/
   * Deserialize and validate governance data
   * Provide governance data API for agents and wizards
   * Fingerprint validation and salt strategy verification
@@ -104,7 +104,7 @@ msgpack binaries + metadata
   ↓ [PHASE 3: Integration]
 Full pipeline validation (8 checks)
   ↓ [PHASE 4: Deployment]
-.sdd-runtime/compiled/ (artifacts deployed)
+.sdd-wizard/compiled/ (artifacts deployed)
   ↓ [PHASE 5: Wizard Integration]
 Runtime loaders, integrators, templates
 Ready for wizard and agent use
@@ -129,7 +129,7 @@ Ready for wizard and agent use
 - `metadata-core.json` — Core metadata with readonly flag
 - `metadata-client-template.json` — Client metadata with customizable flag
 
-**Deployed Directory: `.sdd-runtime/compiled/`**
+**Deployed Directory: `.sdd-wizard/compiled/`**
 - All 4 artifacts copied from .sdd-compiled/
 - Backup directory for previous versions
 - DEPLOYMENT_MANIFEST.json with versioning info
