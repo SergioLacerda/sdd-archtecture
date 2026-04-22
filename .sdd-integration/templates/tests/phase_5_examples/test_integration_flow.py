@@ -49,7 +49,7 @@ class TestIntegrationFlow:
         # Simulate copying templates from sdd-archtecture/INTEGRATION/templates/
         # Resolve symlinks to get actual path
         current_file = Path(__file__).resolve()
-        framework_dir = current_file.parent.parent.parent / "INTEGRATION" / "templates"
+        framework_dir = current_file.parent.parent.parent / ".sdd-integration" / "templates"
         
         if not framework_dir.exists():
             print(f"  ⚠️  WARNING: Framework templates not found at {framework_dir}")

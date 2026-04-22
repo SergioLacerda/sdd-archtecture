@@ -73,7 +73,7 @@ A complete framework for building software where:
 
 **Everything in this framework is organized into clear flows:**
 
-- **INTEGRATION/:** Adding projects to the framework (30 min)
+- **.sdd-integration/:** Adding projects to the framework (30 min)
 - **EXECUTION/:** Developing with the framework (ongoing)
 - **context/:** Framework history & decisions (reference)
 
@@ -133,7 +133,7 @@ A complete framework for building software where:
 **Decision Tree:**
 
 ### 🔷 **Are you adding a NEW project to SDD?**
-Yes → **[INTEGRATION/](./INTEGRATION/)** (30 minutes, 5 steps) + your chosen adoption path
+Yes → **[.sdd-integration/](./.sdd-integration/)** (30 minutes, 5 steps) + your chosen adoption path
 
 ### 🔷 **Are you developing a feature/bug/improvement?**
 Yes → **[EXECUTION/](./.sdd-core/)** (ongoing, 7-phase workflow with your adoption level)
@@ -153,7 +153,7 @@ Yes → **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**
 | Task | Time | Go To |
 |------|------|-------|
 | **Learn about SDD** | 5-10 min | [README.md](./README.md) (you are here) |
-| **Add my project** | 30 min | [INTEGRATION/README.md](./INTEGRATION/README.md) → [INTEGRATION/CHECKLIST.md](./INTEGRATION/CHECKLIST.md) |
+| **Add my project** | 30 min | [.sdd-integration/README.md](./.sdd-integration/README.md) → [.sdd-integration/CHECKLIST.md](./.sdd-integration/CHECKLIST.md) |
 | **Start developing** | 5 min | [EXECUTION/_START_HERE.md](./.sdd-core/_START_HERE.md) |
 | **Choose LITE vs FULL** | 5 min | [EXECUTION/spec/guides/adoption/INDEX.md](./.sdd-core/spec/guides/adoption/INDEX.md) |
 | **See our design** | 1 page | [context/analysis/CRITIQUE-RESPONSE-EXEC-SUMMARY.md](./context/analysis/CRITIQUE-RESPONSE-EXEC-SUMMARY.md) |
@@ -161,7 +161,7 @@ Yes → **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**
 
 ### By Role
 
-- **👨‍💼 Engineering Manager:** [INTEGRATION/README.md](./INTEGRATION/README.md) → Choose LITE/FULL → Ready
+- **👨‍💼 Engineering Manager:** [.sdd-integration/README.md](./.sdd-integration/README.md) → Choose LITE/FULL → Ready
 - **👨‍💻 Developer:** [EXECUTION/_START_HERE.md](./.sdd-core/_START_HERE.md) → Pick adoption → Start coding
 - **🤖 AI Agent:** [.ai-index.md](./.ai-index.md) → Understand scope → [EXECUTION/](./.sdd-core/) flow
 - **🎓 Learner:** [EXECUTION/spec/guides/adoption/INDEX.md](./.sdd-core/spec/guides/adoption/INDEX.md) → Pick LITE/FULL → Learn at your pace
@@ -182,7 +182,7 @@ Yes → **[.github/copilot-instructions.md](./.github/copilot-instructions.md)**
 
 ### INTEGRATION Flow (Add Projects - 30 min)
 ```
-INTEGRATION/
+.sdd-integration/
 ├── README.md               ← Integration overview
 ├── CHECKLIST.md            ← 6-step checklist
 ├── STEP_1.md through STEP_6.md
@@ -243,7 +243,7 @@ context/
 |------|-----------|-----------|
 | Learn about SDD | Root | README.md |
 | AI agent setup | Root | .ai-index.md |
-| Add new project | INTEGRATION/ | README.md |
+| Add new project | .sdd-integration/ | README.md |
 | Start developing | EXECUTION/ | _START_HERE.md |
 | Choose adoption | EXECUTION/guides/adoption/ | INDEX.md |
 | Understand design | context/ | analysis/ |
@@ -256,7 +256,7 @@ context/
 | **Purpose:** Add projects | **Purpose:** Develop code |
 | **Time:** 30 minutes | **Time:** 40 min setup + ongoing |
 | **Users:** Project leads | **Users:** Developers, agents |
-| **Docs:** [INTEGRATION/](./INTEGRATION/) | **Docs:** [EXECUTION/](./.sdd-core/) |
+| **Docs:** [.sdd-integration/](./.sdd-integration/) | **Docs:** [EXECUTION/](./.sdd-core/) |
 | **Goal:** Framework ready | **Goal:** Feature implemented |
 
 ### Constitutional Layer
@@ -418,7 +418,7 @@ While the current implementation targets Python/FastAPI, the underlying principl
 - ✅ Published benchmark suite
 - ✅ Case studies from different domains
 
-→ **Want to be a pilot?** [See INTEGRATION/README.md](./INTEGRATION/README.md#early-adopters)
+→ **Want to be a pilot?** [See .sdd-integration/README.md](./.sdd-integration/README.md#early-adopters)
 
 ---
 
@@ -427,7 +427,7 @@ While the current implementation targets Python/FastAPI, the underlying principl
 | Need | Link |
 |------|------|
 | **AI governance rules** | [.github/copilot-instructions.md](./.github/copilot-instructions.md) |
-| **New project integration** | [INTEGRATION/README.md](./INTEGRATION/README.md) |
+| **New project integration** | [.sdd-integration/README.md](./.sdd-integration/README.md) |
 | **Start developing** | [EXECUTION/_START_HERE.md](./.sdd-core/_START_HERE.md) |
 | **Rules to follow** | [EXECUTION/spec/CANONICAL/rules/](./.sdd-core/spec/CANONICAL/rules/) |
 | **Architecture patterns** | [EXECUTION/spec/CANONICAL/decisions/](./.sdd-core/spec/CANONICAL/decisions/) |
@@ -443,7 +443,7 @@ While the current implementation targets Python/FastAPI, the underlying principl
 ### For Teams (30 minutes)
 ```bash
 cd /path/to/new-project
-# Follow: INTEGRATION/CHECKLIST.md
+# Follow: .sdd-integration/CHECKLIST.md
 # Result: Project ready for development
 ```
 
@@ -499,5 +499,5 @@ For details: [EXECUTION/spec/CANONICAL/specifications/definition-of-done.md](./.
 Built by teams for teams. Proven at scale.
 
 For machine learning seed: [.ai-index.md](./.ai-index.md)  
-To integrate: [INTEGRATION/README.md](./INTEGRATION/README.md)  
+To integrate: [.sdd-integration/README.md](./.sdd-integration/README.md)  
 To develop: [EXECUTION/README.md](./.sdd-core/README.md)
