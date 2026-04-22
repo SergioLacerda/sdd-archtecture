@@ -1,4 +1,4 @@
-# 🛑 PROJECT BOUNDARY
+# 🛑 PROJECT BOUNDARY — SDD Framework v3.0
 
 **⚠️ This information is now consolidated in `.ai-index.md`**
 
@@ -9,9 +9,10 @@ Go to section: **"⚠️ Project Boundary: This Is The SDD Framework Itself"**
 ---
 
 **Summary:**
-- This is the SDD framework repository (not a client project)
-- Do: Develop framework documentation, INTEGRATION templates, CANONICAL layer
-- Don't: Reference external projects, audit other projects, treat projects as examples
+- This is the **SDD Framework v3.0** repository (not a client project)
+- Framework structure: `.sdd-core/` (source + specs, 106 files) + `.sdd-integration/` (templates, 50 files)
+- Do: Framework development, governance rules, integration guides, CLI tooling
+- Don't: Reference external projects, modify governance core immutably
 - Authority flow: Framework → Projects (one-directional only)
 
 **For complete details:** See `.ai-index.md`

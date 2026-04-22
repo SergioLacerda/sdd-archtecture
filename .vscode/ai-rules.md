@@ -1,6 +1,6 @@
-# 🤖 AI Rules for VS Code
+# 🤖 AI Rules for VS Code (v3.0)
 
-**VS Code has detected this workspace uses SDD Framework governance.**
+**VS Code has detected this workspace uses SDD Framework v3.0 governance.**
 
 ---
 
@@ -9,12 +9,13 @@
 **Read this first:** [.ai-index.md](./.ai-index.md)
 
 This is your AI learning seed. It contains:
-- What this project is (SDD Framework)
-- Your entry points (INTEGRATION vs EXECUTION flows)
+- What this project is (SDD Framework v3.0, production-ready)
+- Your entry points (.sdd-core/ for development, .sdd-integration/ for templates)
 - Project boundary (framework only, no external projects)
 - Rule enforcement mechanisms (4-layer validation)
 - Framework status & priorities (what to work on)
 - Full AGENT_HARNESS workflow (7-phase process)
+- CLI reference (how to use sdd commands)
 
 ---
 
@@ -42,16 +43,19 @@ This is your AI learning seed. It contains:
 
 ## 📍 Entry Points by Scenario
 
-**First time here?**
-→ Read [EXECUTION/_START_HERE.md](./EXECUTION/_START_HERE.md)
+**First .sdd-core/EXECUTION/_START_HERE.md](./.sdd-core/EXECUTION/_START_HERE.md)
 
 **Have a bug to fix?**
-→ Read [EXECUTION/spec/guides/onboarding/AGENT_HARNESS.md](./EXECUTION/spec/guides/onboarding/AGENT_HARNESS.md)
+→ Read [.sdd-core/EXECUTION/spec/guides/onboarding/AGENT_HARNESS.md](./.sdd-core/EXECUTION/spec/guides/onboarding/AGENT_HARNESS.md)
 
 **Stuck or confused?**
-→ Read [EXECUTION/spec/guides/emergency/README.md](./EXECUTION/spec/guides/emergency/README.md)
+→ Read [.sdd-core/EXECUTION/spec/guides/emergency/README.md](./.sdd-core/EXECUTION/spec/guides/emergency/README.md)
 
 **Need to find something?**
+→ Read [.sdd-core/EXECUTION/NAVIGATION.md](./.sdd-core/EXECUTION/NAVIGATION.md)
+
+**Want CLI reference?**
+→ Read [README.md](./README.md) (CLI Usage section
 → Read [EXECUTION/NAVIGATION.md](./EXECUTION/NAVIGATION.md)
 
 ---
