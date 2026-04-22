@@ -7,7 +7,7 @@
 ## 📋 Wizard's Role
 
 The Wizard is the **central orchestrator** that:
-1. Reads user input (language, mandates, profile)
+1. Reads user input (language, mandates)
 2. Loads SOURCE from `.sdd-core/` (validation)
 3. Reads COMPILED from `.sdd-runtime/` (binary)
 4. Applies SCAFFOLD from `.sdd-wizard/templates/` (base files)
@@ -22,7 +22,6 @@ The Wizard is the **central orchestrator** that:
 ┌─ USER INPUT ────────────────────────────────────────┐
 │ • Language: Java / Python / JS                      │
 │ • Mandates: Select M001, M002, ...                  │
-│ • Profile: ULTRA-LITE / LITE / FULL                │
 │ • Destination: /path/to/my-project/                │
 └───────────────┬──────────────────────────────────────┘
                 │
@@ -53,11 +52,11 @@ The Wizard is the **central orchestrator** that:
 │ • Build filtered mandate.spec                      │
 └───────────────┬──────────────────────────────────────┘
                 │
-                ↓ PHASE 4: FILTER GUIDELINES BY LANGUAGE & PROFILE
+│                ↓ PHASE 4: FILTER GUIDELINES BY LANGUAGE
 ┌────────────────────────────────────────────────────┐
 │ Guidelines Filtering Pipeline                      │
 │ • Filter by LANGUAGE (remove irrelevant guides)    │
-│ • Filter by PROFILE (LITE=essential only)          │
+│ • User customizes which to implement (not profiles) │
 │ • Organize by CATEGORY (git, testing, naming, ...) │
 │ • Generate .md files per category                  │
 └───────────────┬──────────────────────────────────────┘
@@ -71,9 +70,9 @@ The Wizard is the **central orchestrator** that:
 │   - {{SOURCE_HASH}} → hash of sources              │
 │   - {{MANDATES}} → selected mandate list           │
 │   - {{LANGUAGE}} → java/python/js                  │
-│   - {{PROFILE}} → ultra-lite/lite/full             │
+│   - {{LANGUAGE}} → java/python/js             │
 │ • Load language-specific scaffold                  │
-│ • Load profile-specific templates (v3.2+)         │
+│ • Load language-specific scaffold                  │
 └───────────────┬──────────────────────────────────────┘
                 │
                 ↓ PHASE 6: GENERATE PROJECT STRUCTURE

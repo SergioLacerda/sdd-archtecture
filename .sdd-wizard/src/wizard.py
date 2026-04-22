@@ -121,10 +121,10 @@ class WizardOrchestrator:
         self.print_phase_result(success, report)
         return success
     
-    def run_phase_4(self, language='python', profile='lite'):
+    def run_phase_4(self, language='python'):
         """Execute Phase 4: Filter guidelines"""
         self.print_phase_header(4, "Filter Guidelines")
-        self.log("INFO", f"Filtering guidelines by language={language}, profile={profile}...")
+        self.log("INFO", f"Filtering guidelines by language={language}...")
         
         # Get guidelines from Phase 2
         phase_2_report = self.phases_results.get('phase_2', {})
@@ -137,14 +137,13 @@ class WizardOrchestrator:
         success, report = phase_4_filter_guidelines(
             compiled_guidelines,
             language=language,
-            profile=profile,
             repo_root=self.repo_root
         )
         self.phases_results['phase_4'] = report
         self.print_phase_result(success, report)
         return success
     
-    def run_phase_5(self, language='python', profile='full', output_dir: Path = None):
+    def run_phase_5(self, language='python', output_dir: Path = None):
         """Execute Phase 5: Apply template"""
         self.print_phase_header(5, "Apply Template Scaffold")
         self.log("INFO", "Copying and customizing template files...")
@@ -155,7 +154,6 @@ class WizardOrchestrator:
         success, report = phase_5_apply_template(
             scaffolding_dir=output_dir,
             language=language,
-            profile=profile,
             repo_root=self.repo_root
         )
         self.phases_results['phase_5'] = report
@@ -217,13 +215,13 @@ class WizardOrchestrator:
         self.print_phase_result(success, report)
         return success
     
-    def run_full_pipeline(self, language='python', profile='lite', mandates=None, output_dir: Path = None) -> bool:
+    def run_full_pipeline(self, language='python', mandates=None, output_dir: Path = None) -> bool:
         """Execute complete pipeline (phases 1-7)"""
         print()
         print("🔮 SDD v3.0 Wizard - Project Generator")
         print("=" * 60)
         print(f"Started: {datetime.now().isoformat()}")
-        print(f"Language: {language}, Profile: {profile}")
+        print(f"Language: {language}")
         print()
         
         # Phase 1: Validate SOURCE
@@ -242,13 +240,13 @@ class WizardOrchestrator:
             return False
         
         # Phase 4: Filter Guidelines
-        if not self.run_phase_4(language, profile):
+        if not self.run_phase_4(language):
             print("\n❌ Pipeline stopped at Phase 4 (Guideline filtering failed)")
             return False
         
         # Phase 5: Apply Template
         scaffold_dir = (output_dir or (self.repo_root / "sdd-generated")) / "scaffold"
-        if not self.run_phase_5(language, profile, scaffold_dir):
+        if not self.run_phase_5(language, scaffold_dir):
             print("\n⚠️  Phase 5 warning (template not critical)")
         
         # Phase 6: Generate Project
@@ -315,14 +313,6 @@ Examples:
         help="Comma-separated mandate IDs (e.g., M001,M002)"
     )
     
-    # Optional: Profile selection
-    parser.add_argument(
-        "--profile",
-        choices=["lite", "full"],
-        default="lite",
-        help="Guideline profile level (default: lite)"
-    )
-    
     # Optional: Output directory
     parser.add_argument(
         "--output",
@@ -372,7 +362,6 @@ def main():
         # For now, run full pipeline in test mode
         orchestrator.run_full_pipeline(
             language=args.language or 'python',
-            profile=args.profile,
             mandates=mandates,
             output_dir=args.output
         )
@@ -381,7 +370,6 @@ def main():
     # Run wizard
     success = orchestrator.run_full_pipeline(
         language=args.language or 'python',
-        profile=args.profile,
         mandates=mandates,
         output_dir=args.output
     )

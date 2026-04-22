@@ -62,20 +62,17 @@ def filter_guidelines_by_language(
 def phase_4_filter_guidelines(
     guidelines: Dict,
     language: str = 'python',
-    profile: str = 'full',
     repo_root: Path = Path.cwd()
 ) -> Tuple[bool, Dict]:
     """
-    Filter guidelines by language only
+    Filter guidelines by language
     
-    NOTE: Profile filtering (lite/full) is not yet supported as guidelines
-    in the compiled format don't include priority metadata. This can be added
-    in a future update when priority is included in the compilation process.
+    In v3.0, user customization is handled via CORE+CLIENT separation,
+    not via predefined profiles. Users choose which guidelines to implement.
     
     Args:
         guidelines: Dictionary of all guidelines from Phase 2
         language: Target language (java, python, js)
-        profile: Target profile (lite, full) - currently unused but kept for API compatibility
         repo_root: Repository root (for logging context)
     
     Returns:
@@ -101,7 +98,6 @@ def phase_4_filter_guidelines(
         'data': {
             'filtered_guidelines': {},
             'language': language,
-            'profile': profile,
             'filtering_details': {
                 'language_removed': [],
             },
@@ -133,14 +129,7 @@ def phase_4_filter_guidelines(
     
     report['checks']['language_valid'] = True
     
-    # Step 3: Note about profile filtering
-    report['warnings'].append(
-        'Profile filtering (lite/full) is not yet supported. '
-        'All guidelines at all priority levels are included. '
-        'This feature will be added when priority metadata is included in compilation.'
-    )
-    
-    # Step 4: Apply language filter only
+    # Step 3: Apply language filter only
     language_filtered, language_removed = filter_guidelines_by_language(
         guidelines,
         language

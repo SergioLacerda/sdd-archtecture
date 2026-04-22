@@ -114,8 +114,8 @@ def _validate_metadata_integrity(project_dir: Path) -> Tuple[bool, List[str]]:
     try:
         metadata = json.loads(metadata_file.read_text(encoding='utf-8'))
         
-        # Check required fields
-        required_fields = ['version', 'generated_at']
+        # Check required fields (v3.0: no version field, no retrocompat needed)
+        required_fields = ['generated_at']
         for field in required_fields:
             if field in metadata:
                 messages.append(f"✓ Metadata field present: {field}")

@@ -1,6 +1,6 @@
 """Phase 5: Apply template scaffold and customizations
 
-Copies template files from .sdd-wizard/templates/ and applies language/profile customizations
+Copies template files from .sdd-wizard/templates/ and applies language customizations
 """
 
 from pathlib import Path
@@ -13,12 +13,6 @@ def _get_language_template_dir(language: str) -> Path:
     """Get language-specific template directory"""
     wizard_root = Path(__file__).parent.parent
     return wizard_root / "templates" / "languages" / language
-
-
-def _get_profile_template_dir(profile: str) -> Path:
-    """Get profile-specific template directory"""
-    wizard_root = Path(__file__).parent.parent
-    return wizard_root / "templates" / "profiles" / profile
 
 
 def _get_base_template_dir() -> Path:
@@ -115,39 +109,9 @@ def _customize_file_for_language(
         return (False, f"Error customizing file: {e}")
 
 
-def _customize_file_for_profile(
-    file_path: Path,
-    profile: str
-) -> Tuple[bool, str]:
-    """Apply profile-specific customizations to a file
-    
-    Returns:
-        (success, message)
-    """
-    if not file_path.exists():
-        return (False, f"File not found: {file_path}")
-    
-    try:
-        content = file_path.read_text(encoding='utf-8')
-        
-        # Profile-specific placeholders
-        replacements = {
-            'PROFILE': profile.upper(),
-            'profile': profile.lower(),
-        }
-        
-        customized = _apply_placeholder_replacements(content, replacements)
-        file_path.write_text(customized, encoding='utf-8')
-        
-        return (True, f"Customized for {profile} profile")
-    except Exception as e:
-        return (False, f"Error customizing file: {e}")
-
-
 def phase_5_apply_template(
     scaffolding_dir: Path,
     language: str = 'python',
-    profile: str = 'full',
     repo_root: Path = Path.cwd()
 ) -> Tuple[bool, Dict[str, Any]]:
     """Apply template scaffold and customizations
@@ -155,11 +119,10 @@ def phase_5_apply_template(
     Args:
         scaffolding_dir: Output directory for scaffolding
         language: Target language (java|python|js)
-        profile: Profile level (lite|full)
         repo_root: Repository root
     
     Returns:
-        (success, report)
+        (success, report))
     """
     report = {
         'phase': 'PHASE_5_APPLY_TEMPLATE',
@@ -168,7 +131,6 @@ def phase_5_apply_template(
         'statistics': {
             'base_files_copied': 0,
             'language_files_copied': 0,
-            'profile_files_copied': 0,
             'customizations_applied': 0,
         },
         'warnings': [],
@@ -201,27 +163,12 @@ def phase_5_apply_template(
         else:
             report['warnings'].append(f"Language template not found: {lang_dir}")
         
-        # 3. Copy profile-specific templates
-        profile_dir = _get_profile_template_dir(profile)
-        if profile_dir.exists():
-            profile_copied, profile_errors = _copy_template_files(profile_dir, scaffolding_dir)
-            report['statistics']['profile_files_copied'] = profile_copied
-            if profile_errors:
-                report['warnings'].extend(profile_errors)
-        else:
-            report['warnings'].append(f"Profile template not found: {profile_dir}")
-        
-        # 4. Apply customizations
+        # 3. Apply customizations
         customizations_count = 0
         for file_path in scaffolding_dir.rglob('*'):
             if file_path.is_file() and file_path.suffix in ['.md', '.json', '.yml', '.yaml', '.txt', '.cfg']:
                 # Apply language customization
                 success, msg = _customize_file_for_language(file_path, language)
-                if success:
-                    customizations_count += 1
-                
-                # Apply profile customization
-                success, msg = _customize_file_for_profile(file_path, profile)
                 if success:
                     customizations_count += 1
         
@@ -235,8 +182,7 @@ def phase_5_apply_template(
         report['data'] = {
             'scaffolding_dir': str(scaffolding_dir),
             'language': language,
-            'profile': profile,
-            'total_files': base_copied + report['statistics']['language_files_copied'] + report['statistics']['profile_files_copied'],
+            'total_files': base_copied + report['statistics']['language_files_copied'],
         }
         
         report['status'] = 'SUCCESS'

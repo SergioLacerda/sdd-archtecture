@@ -62,8 +62,7 @@
 │                                                                    │
 │  INPUTS (from wizard user):                                       │
 │  • Language: java | python | js                                  │
-│  • Mandates: M001, M002, ... (user selects)                      │
-│  • Profile: ultra-lite | lite | full                             │
+│  • Mandates: M001, M002, ... (user selects or all)              │
 │  • Destination: /path/to/my-project/                             │
 │                                                                    │
 │  ┌─ PHASE 1: VALIDATE SOURCE ──────────────────────────┐         │
@@ -110,14 +109,13 @@
 │  │ Load: .sdd-wizard/templates/base/metadata-template.json      │         │
 │  │ Load: .sdd-template/base/.github/workflows/*.yml     │         │
 │  │ Load: .sdd-wizard/templates/languages/java/* (if java)       │         │
-│  │ Load: .sdd-wizard/templates/profiles/lite/* (if lite)        │         │
+│  │ Load: .sdd-wizard/templates/base/* (language-neutral)         │         │
 │  │                                                       │         │
 │  │ Substitute Placeholders:                             │         │
 │  │ • {{TIMESTAMP}} → 2026-04-21T15:35:22Z              │         │
 │  │ • {{SOURCE_HASH}} → a1b2c3d4e5f6...                 │         │
 │  │ • {{MANDATES}} → M001, M002                          │         │
 │  │ • {{LANGUAGE}} → java                                │         │
-│  │ • {{PROFILE}} → lite                                 │         │
 │  │ • {{PROJECT_NAME}} → my-project                      │         │
 │  │ • {{JAVA_VERSION}} → 11 (if java)                    │         │
 │  │ • {{BUILD_TOOL}} → maven (if java)                   │         │
@@ -288,9 +286,9 @@ Phase 4 Filtering (by language):
 Result: Only Java-relevant guidelines in .sdd-guidelines/
 ```
 
-### Guideline Filtering - Profile
+### Guideline Filtering - Language Only (No Profiles)
 ```
-User Input: Profile = "lite"
+User Input: Language = "java"
 
 All Java Guidelines:
   - G001: essential (priority: 1) ← KEEP
@@ -298,9 +296,9 @@ All Java Guidelines:
   - G020: advanced (priority: 3) ← DROP (lite only = priority 1-2)
   - G055: expert (priority: 4) ← DROP
 
-Phase 4 Filtering (by profile):
-  LITE profile:   Keep priority 1-2 only
-  FULL profile:   Keep priority 1-4 (all)
+Phase 4 Filtering (by language):
+  Language-specific:   Filter by language tags
+  User-customizable:    Choose which guidelines to implement (not framework-imposed)
   
 Result:
   .sdd-guidelines/*.md files only have lite-level content
@@ -438,7 +436,7 @@ Phase 3: Filter Mandates
 
 Phase 4: Filter Guidelines
   ✓ Gracefully handles missing language
-  ✓ Gracefully handles invalid profile
+  ✓ Filters guidelines by language (practical)
   ✓ Falls back to defaults
 
 Phase 6: Generate Project
@@ -472,7 +470,7 @@ Phase 7: Validate Output
   "user_selections": {
     "language": "java",
     "mandates_chosen": ["M001"],
-    "profile": "lite"
+    "language": "java"
   },
   "wizard_version": "3.0.0",
   "java_version": "11",
@@ -501,7 +499,7 @@ $ cat .sdd/metadata.json | jq .
   │
   ├─→ Language? java/python/js → Validate ✓
   ├─→ Mandates? M001,M002 → Validate ✓
-  ├─→ Profile? lite/full → Validate ✓
+  ├─→ Language? java/python/js → Validate ✓
   ├─→ Output? /path → Validate ✓
   │
   ↓
@@ -514,7 +512,7 @@ $ cat .sdd/metadata.json | jq .
   ↓
 [PHASE 3-5: FILTER & SCAFFOLD]
   ├─→ Filter mandates by user choice
-  ├─→ Filter guidelines by language + profile
+  ├─→ Filter guidelines by language
   ├─→ Load .sdd-wizard/templates/ scaffolds
   ├─→ Substitute placeholders
   ├─→ Error? → [ERROR STATE] → STOP
@@ -569,12 +567,12 @@ $ cat .sdd/metadata.json | jq .
 2. Wizard asks questions:
    Language? → java
    Mandates? → M001, M002
-   Profile? → lite
+   Language? → java
    Output? → ~/my-java-project/
 
 3. Wizard orchestrates:
    PHASE 1-2: Validates + loads sources
-   PHASE 3-4: Filters by language + profile
+   PHASE 3-4: Filters by language + user selection
    PHASE 5-6: Applies template + generates project
    PHASE 7: Validates output
 
