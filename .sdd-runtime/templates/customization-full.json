@@ -1,7 +1,7 @@
 {
   "version": "3.0",
   "type": "full-customization-template",
-  "generated": "2026-04-22T16:12:02.925091Z",
+  "generated": "2026-04-22T16:16:21.228127Z",
   "metadata": {
     "template_name": "full-customization",
     "description": "Full template showing core (immutable) and client (customizable)",
