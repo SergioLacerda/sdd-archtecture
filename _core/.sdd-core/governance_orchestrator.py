@@ -33,7 +33,7 @@ class GovernanceOrchestrator:
             repo_root = Path(repo_root)
 
         self.repo_root = repo_root
-        self.sdd_core = repo_root / ".sdd-core"
+        self.sdd_spec = repo_root / "_spec"
         self.compiled_dir = repo_root / ".sdd-compiled"
 
     def run_full_pipeline(self) -> Dict[str, Any]:
@@ -97,7 +97,7 @@ class GovernanceOrchestrator:
             Result dictionary from pipeline
         """
         try:
-            builder = PipelineBuilder(str(self.sdd_core))
+            builder = PipelineBuilder(str(self.sdd_spec))
             result = builder.build()
 
             # Save outputs
