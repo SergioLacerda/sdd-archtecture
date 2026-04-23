@@ -1,6 +1,6 @@
 """
 PHASE 5: Governance Runtime Loader
-Load compiled msgpack artifacts from .sdd-runtime/compiled/
+Load compiled msgpack artifacts from .sdd-compiler/runtime/
 
 Provides:
 1. Load and deserialize msgpack files
@@ -19,16 +19,22 @@ from hashlib import sha256
 class GovernanceRuntimeLoader:
     """Load and manage governance artifacts at runtime"""
 
-    def __init__(self, runtime_dir: str = None):
-        """Initialize runtime loader"""
-        if runtime_dir is None:
-            # Default to .sdd-runtime/ in project root
-            runtime_dir = Path(__file__).parent
+    def __init__(self, compiled_dir: str = None):
+        """Initialize runtime loader
+        
+        Args:
+            compiled_dir: Path to .sdd-compiler/runtime directory.
+                         If None, discovers from repository root.
+        """
+        if compiled_dir is None:
+            # Discover from repository root: go up from this file
+            # File is at: repo/.sdd-wizard/.sdd-runtime/governance_runtime_loader.py
+            repo_root = Path(__file__).parent.parent.parent.parent
+            compiled_dir = repo_root / "_core" / ".sdd-compiler" / "runtime"
         else:
-            runtime_dir = Path(runtime_dir)
+            compiled_dir = Path(compiled_dir)
 
-        self.runtime_dir = runtime_dir
-        self.compiled_dir = runtime_dir / "compiled"
+        self.compiled_dir = compiled_dir
         self._core_data = None
         self._client_data = None
         self._core_metadata = None

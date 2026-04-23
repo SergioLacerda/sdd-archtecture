@@ -2,7 +2,7 @@
 Tests for PHASE 4: Deployment
 
 Validates:
-1. Deployment files copied to .sdd-runtime/compiled/
+1. Deployment files copied to .sdd-compiler/runtime/
 2. All required files present
 3. Metadata valid
 4. Deployment checklist generated
@@ -51,7 +51,7 @@ class TestPhase4Deployment:
         result = manager.deploy()
 
         location = result.get("deployment_location")
-        assert ".sdd-runtime/compiled" in location
+        assert ".sdd-compiler/runtime" in location
         assert Path(location).exists()
 
     def test_checklist_all_passed(self, manager):
