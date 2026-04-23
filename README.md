@@ -1,461 +1,188 @@
-# 🏛️ SDD Architecture Framework - v3.0 Complete & Ready
+# 🏛️ SDD Framework v3.0
 
 **Specification-Driven Development with Autonomous Governance**
 
 ![Status](https://img.shields.io/badge/v3.0-✅%20Production-brightgreen?style=flat-square)
 ![Tests](https://img.shields.io/badge/Tests-124%2F124%20✅-brightgreen?style=flat-square)
-![Docs](https://img.shields.io/badge/Docs-Consolidated-blue?style=flat-square)
 
 ---
 
-## 📚 Documentation Hub
+## ⚡ Quick Start (Choose Your Role)
 
-**Start here:** [.sdd-core/_START_HERE.md](.sdd-core/_START_HERE.md) - Get started with v3.0  
-**Integration workflow:** [.sdd-integration/README.md](.sdd-integration/README.md) - Add projects (30 min)  
-**Architecture overview:** [.sdd-core/NAVIGATION.md](.sdd-core/NAVIGATION.md) - Complete structure  
-**AI agents:** [.ai-index.md](.ai-index.md) - Agent entry point
-
----
-
-## 🎯 Quick Navigation
-
-### Current Status (v3.0)
-✅ **Production Ready** - In active use  
-✅ **All Code Ready** - 124/124 tests passing (100%)  
-✅ **Fully Consolidated** - Documentation organized  
-✅ **CLI Ready** - Standalone binary for governance management  
-→ Next: Deploy to your projects via [.sdd-integration/](.sdd-integration/)
-
----
-
-## ✨ What's Ready in v3.0?
-
-🏗️ **Complete Governance Pipeline** — 7-phase architecture, all phases complete (PHASES 1-7)
-
-🔐 **Immutable Core + Flexible Client** — 2-file governance model with fingerprinting for integrity validation
-
-🧠 **AI-First Design** — Autonomous governance for agent-driven development with 124/124 tests passing
-
-📦 **CLI Binary Ready** — Standalone executable (`sdd` command) for governance management
-
-🚀 **Production Ready** — All artifacts compiled, templates ready, integration workflow + operational guides
-
-📖 **Operational Documentation** — Complete guides for deployment, monitoring, maintenance
-
-→ **Full details:** [CHANGELOG.md](./CHANGELOG.md) | [.sdd-core/README.md](./.sdd-core/README.md)
-
----
-
-## 🤖 CLI Usage
-
-The SDD framework includes a powerful CLI for governance management built with Typer and PyInstaller.
-
-### Installation & Setup
-
-**Option 1: Use the Pre-built Binary (Recommended)**
+### 👨‍💻 **I'm a Developer**
 ```bash
-# The binary is at: ./dist/sdd (20MB standalone executable)
-# It requires NO Python installation
+# 1. Read the governance rules (5 min)
+cat .sdd-core/HONEST-CRITIQUE-CONSTITUTION.md
 
-# Make it executable (Linux/macOS)
-chmod +x ./dist/sdd
+# 2. Follow the 7-phase workflow
+cat .sdd-core/spec/guides/onboarding/AGENT_HARNESS.md
 
-# Add to PATH (optional)
-export PATH=$PATH:$(pwd)/dist
+# 3. Run tests to verify setup
+python3 run-all-tests.py --fail-fast
 ```
 
-**Option 2: Install from Source**
+### 🤖 **I'm an AI Agent**
 ```bash
-# Requires Python 3.11+
-pip install -r requirements-cli.txt
+# 1. Your complete guide
+cat .ai-index.md
 
-# Run via Python module
-python -m sdd_cli --help
+# 2. Verify your context
+python3 -c "print('✅ Ready for autonomous development')"
 ```
 
-### Available Commands
-
-#### 1. **Load Governance Configuration**
+### 📦 **I'm Adding a Project to SDD**
 ```bash
-sdd governance load
+# 1. Follow the integration checklist (30 min)
+cat .sdd-integration/CHECKLIST.md
 
-# Output: Displays current governance configuration
-# Shows: Core items (immutable) + Client items (customizable)
+# 2. Execute 5 steps
+cd /path/to/new/project
+# See: .sdd-integration/STEP_1.md through STEP_5.md
 ```
 
-#### 2. **Validate Governance**
+### 🔧 **I'm Using the CLI**
 ```bash
-sdd governance validate
+# Show governance configuration
+python3 -m sdd_cli governance load
 
-# Output: Validates governance integrity
-# Checks: Fingerprints, file structure, compliance
+# Validate integrity
+python3 -m sdd_cli governance validate
+
+# Generate agent seed templates
+python3 -m sdd_cli governance generate
 ```
 
-#### 3. **Generate Agent Seeds**
+---
+
+## 📚 Documentation (Detailed References)
+
+**For complete documentation, see [docs/INDEX.md](./docs/INDEX.md)**
+
+| Document | Purpose | Time |
+|----------|---------|------|
+| [.ai-index.md](.ai-index.md) | AI agent entry point | 15 min |
+| [.sdd-core/_START_HERE.md](.sdd-core/_START_HERE.md) | Developer entry point | 5 min |
+| [.sdd-integration/README.md](.sdd-integration/README.md) | Add projects | 10 min |
+| [docs/TEST_RUNNER_GUIDE.md](./docs/TEST_RUNNER_GUIDE.md) | Run all tests | 10 min |
+| [docs/CHANGELOG.md](./docs/CHANGELOG.md) | Version history | varies |
+
+---
+
+## 🎯 Your Scenarios
+
+### Testing
+
+**Run all tests from root (7 layers):**
 ```bash
-sdd governance generate
+# Quick check (stop on first failure)
+python3 run-all-tests.py --fail-fast
 
-# Output: Generates agent seed knowledge files
-# Supports: Cursor IDE, GitHub Copilot, Generic AI agents
+# Full validation with details
+python3 run-all-tests.py --verbose
+
+# List test layers
+python3 run-all-tests.py --list-layers
+
+# Test specific layer
+python3 run-all-tests.py --layer "Wizard"
 ```
 
-#### 4. **Check Version**
+**See:** [docs/TEST_RUNNER_GUIDE.md](./docs/TEST_RUNNER_GUIDE.md) for complete guide
+
+### CLI Commands
+
+**Load governance:**
 ```bash
-sdd version
-
-# Output: Current framework version
+python3 -m sdd_cli governance load
 ```
 
-### Examples
-
+**Validate integrity:**
 ```bash
-# Get help on any command
-sdd --help
-sdd governance --help
-
-# Run full governance workflow
-sdd governance load
-sdd governance validate
-sdd governance generate
-
-# Check what version is running
-sdd version
+python3 -m sdd_cli governance validate
 ```
 
-### What Each Command Does
-
-| Command | Purpose | Output |
-|---------|---------|--------|
-| `sdd governance load` | Load + display governance config | 155 total items (4 core + 151 customizable) |
-| `sdd governance validate` | Validate integrity + checksums | Fingerprint verification results |
-| `sdd governance generate` | Create agent seed templates | 3 templates (Cursor, Copilot, Generic) |
-| `sdd version` | Show framework version | Current version number |
-
-### Troubleshooting
-
-**"Command not found: sdd"**
-- Make sure binary is in PATH: `export PATH=$PATH:$(pwd)/dist`
-- Or use full path: `./dist/sdd --help`
-
-**"Permission denied"**
-- Binary needs execute permission: `chmod +x ./dist/sdd`
-
-**Python version too old**
-- Ensure Python 3.11+: `python --version`
-- Or use pre-built binary (no Python needed)
-
----
-
-## 🎯 What is SDD?
-
-**SDD = Specification-Driven Development with Autonomous Governance**
-
-A complete framework for building software where:
-- ✅ **AI agents are first-class citizens** — Not afterthoughts, integral to workflow
-- ✅ **Governance is automated** — Rules enforced via code, not meetings
-- ✅ **Every decision is documented** — Architecture Decision Records (ADRs)
-- ✅ **Developers are autonomous** — Clear rules, then get out of the way
-- ✅ **Quality is measurable** — 45+ definition-of-done criteria
-- ✅ **Scaling is seamless** — From 1 project to 100+ projects
-
----
-
-## 🗺️ Project Organization
-
-**Everything in this framework is organized into clear namespaces:**
-
-- **.sdd-core/:** Governance specification + framework source
-- **.sdd-integration/:** Adding projects to the framework (30 min)
-- **.sdd-migration/:** v3.0 migration and historical documentation
-- **.sdd-wizard/:** Runtime compiled artifacts
-- **context/:** Historical analysis & decisions (reference)
-
----
-
-## 🚀 Quick Start
-
-**Decision Tree:**
-
-### 🔷 **Are you adding a NEW project to SDD?**
-Yes → **[.sdd-integration/](./.sdd-integration/)** (30 minutes, 5 steps)
-
-### 🔷 **Are you developing code with SDD?**
-Yes → **[.sdd-core/_START_HERE.md](./.sdd-core/_START_HERE.md)** (7-phase development workflow)
-
-### 🔷 **Are you an AI agent?**
-Yes → **[.ai-index.md](./.ai-index.md)** (governance rules + workflow)
-
-### 🔷 **Need to use the CLI?**
-Yes → **See CLI Usage section above** ↑
-
----
-
-## 🎯 Find Your Task (Quick Navigation)
-
-### I want to...
-
-| Task | Time | Go To |
-|------|------|-------|
-| **Learn about SDD** | 5-10 min | [README.md](./README.md) (you are here) |
-| **Add my project** | 30 min | [.sdd-integration/README.md](./.sdd-integration/README.md) → [.sdd-integration/CHECKLIST.md](./.sdd-integration/CHECKLIST.md) |
-| **Start developing** | 5 min | [.sdd-core/_START_HERE.md](./.sdd-core/_START_HERE.md) |
-| **Use the CLI** | 2 min | See **CLI Usage** section above |
-| **See our design** | 1 page | [context/analysis/CRITIQUE-RESPONSE-EXEC-SUMMARY.md](./context/analysis/CRITIQUE-RESPONSE-EXEC-SUMMARY.md) |
-| **Setup AI agent** | 5 min | [.ai-index.md](./.ai-index.md) |
-
-### By Role
-
-- **👨‍💼 Engineering Manager:** [.sdd-integration/README.md](./.sdd-integration/README.md) → Setup integration → Ready
-- **👨‍💻 Developer:** [.sdd-core/_START_HERE.md](./.sdd-core/_START_HERE.md) → Read governance → Start coding
-- **🤖 AI Agent:** [.ai-index.md](./.ai-index.md) → Understand rules → Execute workflow
-- **🛠️ Operator/DevOps:** Run `sdd governance load` → See CLI Usage section
-
----
-
-## 📁 Project Structure
-
-### Root (Entry Points Only)
-```
-/
-├── README.md                ← You are here (main entry point)
-├── .ai-index.md            ← AI agents entry point
-├── INDEX.md                ← Documentation index
-├── CHANGELOG.md            ← Version history (v3.0 only)
-├── LICENSE                 ← MIT license
-├── .spec.config            ← Framework config
-└── [configuration files]
-```
-
-### Integration Flow (Add Projects - 30 min)
-```
-.sdd-integration/
-├── README.md               ← Integration overview
-├── CHECKLIST.md            ← 5-step checklist
-├── STEP_1.md through STEP_5.md
-├── guides/                 ← Concepts & examples
-└── templates/              ← Setup files to copy
-```
-
-### Development Flow (Ongoing)
-```
-.sdd-core/
-├── _START_HERE.md          ← Developer entry point
-├── NAVIGATION.md           ← Find anything
-├── spec/
-│   ├── CANONICAL/          ← Source of truth
-│   │   ├── rules/
-│   │   ├── decisions/      ← Architecture decisions (ADRs)
-│   │   └── specifications/
-│   └── guides/             ← How-to guides
-├── execution_tests/        ← Test suite
-└── tools/                  ← Framework tooling
-```
-
-### Runtime & Compilation
-```
-.sdd-wizard/               ← Runtime artifacts
-.sdd-compiler/             ← Compiler source
-.sdd-compiled/             ← Build outputs
-```
-
-### Historical Context
-```
-context/                   ← Analysis, critique, historical decisions
-.sdd-migration/           ← v3.0 migration documentation
-```
-
----
-
-## ✨ Core Principles
-
-### Two-File Governance Model
-- **governance-core.json** (4 immutable items) — Never changes
-- **governance-client.json** (151 customizable items) — Adapt to your needs
-- SHA-256 fingerprinting ensures integrity
-- Salt strategy prevents tampering
-
-### 45+ Definition of Done Criteria
-- Code quality checkpoints
-- Architecture compliance rules
-- Testing requirements
-- Documentation standards
-- Security validation
-
-### 8 Architecture Layers
-1. Interface (HTTP/gRPC)
-2. Controllers (Request handling)
-3. Services (Business logic)
-4. Repository (Data access)
-5. Models (Domain objects)
-6. Adapters (External integrations)
-7. Config (Settings management)
-8. Infrastructure (Deployment)
-
----
-
-## 👥 For Different Roles
-
-### 👨‍💼 Engineering Managers
-- Predictable delivery timelines
-- Autonomous teams (less micromanagement)
-- Scalable governance (works at 5 people → 500)
-- Measurable quality metrics
-
-→ **Start:** [.sdd-integration/README.md](./.sdd-integration/README.md)
-
-### 👨‍💻 Individual Developers
-- Clear rules to follow
-- No ambiguity about quality
-- Fast onboarding to new projects
-- Structured code reviews
-
-→ **Start:** [.sdd-core/_START_HERE.md](./.sdd-core/_START_HERE.md)
-
-### 🤖 AI Agents
-- Complete framework specification
-- Autonomous decision-making rules
-- Checkpoint documentation
-- Full context available
-
-→ **Start:** [.ai-index.md](./.ai-index.md)
-
-### 🛠️ DevOps / Operators
-- CLI tools for governance management
-- Automated compliance checking
-- Configuration templates
-- Deployment automation
-
-→ **Start:** `sdd governance load` (see CLI Usage section above)
-
----
-
-## 🏆 Active Usage
-
-**Currently running at:**
-- 5+ projects (internal + partner teams)
-- 3+ organizations (being tested)
-- 100+ developer-hours (in production)
-
-**Status:** Framework fully operational. Ready for production deployment.
-
----
-
-## 🔗 Quick Links
-
-| Need | Link |
-|------|------|
-| **AI governance rules** | [.github/copilot-instructions.md](./.github/copilot-instructions.md) |
-| **New project integration** | [.sdd-integration/README.md](./.sdd-integration/README.md) |
-| **Start developing** | [.sdd-core/_START_HERE.md](./.sdd-core/_START_HERE.md) |
-| **Rules to follow** | [.sdd-core/spec/CANONICAL/rules/](./.sdd-core/spec/CANONICAL/rules/) |
-| **Architecture patterns** | [.sdd-core/spec/CANONICAL/decisions/](./.sdd-core/spec/CANONICAL/decisions/) |
-| **How-to guides** | [.sdd-core/spec/guides/](./.sdd-core/spec/guides/) |
-| **Search documentation** | [.sdd-core/NAVIGATION.md](./.sdd-core/NAVIGATION.md) |
-| **Troubleshooting** | [.sdd-core/spec/guides/emergency/](./.sdd-core/spec/guides/emergency/) |
-
----
-
-## 🚀 Getting Started
-
-### For Teams (30 minutes)
+**Generate templates:**
 ```bash
-cd /path/to/new-project
-# Follow: .sdd-integration/CHECKLIST.md
-# Result: Project ready for development
+python3 -m sdd_cli governance generate
 ```
 
-### For Developers (5 min + ongoing)
-```bash
-# Already integrated? Start here:
-# Read: .sdd-core/_START_HERE.md
-# Follow: 7-phase development workflow
-# Implement: Features with full governance
+### Development Workflow
+
+**You have a task → Follow 7 phases:**
+
+```
+PHASE 0: Setup (.ai infrastructure) — 20-30 min, one time
+PHASE 1: Lock to rules — 15 min
+PHASE 2: Check execution state — 5 min
+PHASE 3: Choose PATH (bug/feature/complex/multi) — 5 min
+PHASE 4: Load context — 10-20 min
+PHASE 5: Implement (TDD) — 1-8 hours
+PHASE 6: Validate (tests + done criteria) — 15 min
+PHASE 7: Checkpoint (document + PR) — 10 min
 ```
 
-### For AI Agents (auto-onboarded)
-```bash
-# Framework provides: .ai-index.md (seed knowledge)
-# Agent learns: Constitution, rules, architecture
-# Agent executes: Full 7-phase workflow
-```
-
-### For DevOps
-```bash
-# Get governance info:
-sdd governance load
-
-# Validate system:
-sdd governance validate
-
-# Generate configs:
-sdd governance generate
-```
+**Details:** [.sdd-core/spec/guides/onboarding/AGENT_HARNESS.md](.sdd-core/spec/guides/onboarding/AGENT_HARNESS.md)
 
 ---
 
-## 🏥 Operations & Production
+## 🏗️ What's Inside
 
-**Running SDD in production? Start here:**
+### Core Framework
+- ✅ **4 immutable mandates** (CORE governance)
+- ✅ **151 customizable guidelines** (CLIENT governance)
+- ✅ **SHA-256 fingerprinting** (integrity validation)
+- ✅ **7-phase wizard** (fully operational)
 
-| Need | Guide | Time |
-|------|-------|------|
-| **Operational overview** | [.sdd-core/OPERATIONS-INDEX.md](./.sdd-core/OPERATIONS-INDEX.md) | 10 min |
-| **Daily operations** | [.sdd-core/OPERATIONS.md](./.sdd-core/OPERATIONS.md) | Ongoing |
-| **Deploy to production** | [.sdd-core/DEPLOYMENT.md](./.sdd-core/DEPLOYMENT.md) | 30-50 min |
-| **Monitor system health** | [.sdd-core/MONITORING.md](./.sdd-core/MONITORING.md) | Ongoing |
-| **Maintenance & upkeep** | [.sdd-core/MAINTENANCE.md](./.sdd-core/MAINTENANCE.md) | Scheduled |
+### Status
+- ✅ **124/124 tests passing** (100% coverage)
+- ✅ **CLI ready** (Typer framework)
+- ✅ **Documentation complete** (150+ files)
+- ✅ **Production-ready**
 
-**Quick reference:**
-```bash
-# Health check
-./scripts/health-check.sh
-
-# Governance validation
-sdd governance validate
-
-# Load configuration
-sdd governance load
-```
-
-→ **Full operations guide:** [.sdd-core/OPERATIONS-INDEX.md](./.sdd-core/OPERATIONS-INDEX.md)
+### Entry Points
+- [.sdd-core/](.sdd-core/) — Development workflow
+- [.sdd-integration/](.sdd-integration/) — Add projects
+- [.sdd-wizard/](.sdd-wizard/) — Runtime artifacts
+- [.sdd-compiler/](.sdd-compiler/) — Compiler source
 
 ---
 
-## 📝 License
+## 🔗 Key Files
 
-![License](https://img.shields.io/badge/License-MIT-green)
-
-**MIT License** — Free to use, modify, and distribute in personal or commercial projects.
-
-See [LICENSE](./LICENSE) file for full text.
-
----
-
-## 🤝 Contributing
-
-This is a mature framework. Contributions should:
-- Maintain world-class separation of concerns
-- Preserve constitutional layer
-- Document all decisions
-- Pass 45+ quality criteria
-
-For details: [.sdd-core/spec/CANONICAL/specifications/definition-of-done.md](./.sdd-core/spec/CANONICAL/specifications/definition-of-done.md)
+| File | Use When |
+|------|----------|
+| [.sdd-core/HONEST-CRITIQUE-CONSTITUTION.md](.sdd-core/HONEST-CRITIQUE-CONSTITUTION.md) | Need governance rules |
+| [.sdd-core/spec/guides/onboarding/AGENT_HARNESS.md](.sdd-core/spec/guides/onboarding/AGENT_HARNESS.md) | Implementing a feature |
+| [.sdd-core/spec/CANONICAL/decisions/](.sdd-core/spec/CANONICAL/decisions/) | Understand architecture |
+| [.sdd-core/NAVIGATION.md](.sdd-core/NAVIGATION.md) | Find documentation |
+| [docs/TEST_RUNNER_GUIDE.md](./docs/TEST_RUNNER_GUIDE.md) | Run tests |
 
 ---
 
-## 📞 Support
+## 📞 Help
 
-**Questions?**
-- Read: [.sdd-core/spec/guides/reference/FAQ.md](./.sdd-core/spec/guides/reference/FAQ.md)
-- Search: [.sdd-core/NAVIGATION.md](./.sdd-core/NAVIGATION.md)
-- Emergency: [.sdd-core/spec/guides/emergency/](./.sdd-core/spec/guides/emergency/)
+- **Developer:** [.sdd-core/_START_HERE.md](.sdd-core/_START_HERE.md)
+- **AI Agent:** [.ai-index.md](.ai-index.md)
+- **Adding Project:** [.sdd-integration/README.md](.sdd-integration/README.md)
+- **Tests:** [docs/TEST_RUNNER_GUIDE.md](./docs/TEST_RUNNER_GUIDE.md)
+- **Emergency:** [.sdd-core/spec/guides/emergency/](.sdd-core/spec/guides/emergency/)
 
 ---
 
-**SDD v3.0 — Production Ready**  
-Built by teams for teams. Fully tested and operational.
+## ✅ Status
 
-For machine learning seed: [.ai-index.md](./.ai-index.md)  
-To integrate: [.sdd-integration/README.md](./.sdd-integration/README.md)  
-To develop: [.sdd-core/_START_HERE.md](./.sdd-core/_START_HERE.md)  
-To use CLI: `sdd --help`
+| Component | Status | Tests |
+|-----------|--------|-------|
+| Governance Pipeline | ✅ Complete | 13/13 |
+| Compiler | ✅ Complete | 15/15 |
+| Integration | ✅ Complete | 15/15 |
+| Deployment | ✅ Complete | 16/16 |
+| Wizard | ✅ Complete | 41/41 |
+| CLI | ✅ Complete | 24/24 |
+| **Total** | **✅ Ready** | **124/124** |
+
+---
+
+**SDD Framework v3.0** — Production Ready  
+**Last Updated:** April 22, 2026  
+**License:** MIT

@@ -1,1108 +1,9 @@
 {
-  "category": "CLIENT",
   "version": "3.0",
-  "generated_at": null,
+  "type": "GOVERNANCE_CLIENT",
+  "readonly": false,
+  "compiled_at": "2026-04-23T11:02:07.148369",
   "items": [
-    {
-      "id": "GUARDRAIL-001",
-      "title": "No bare exceptions in production code",
-      "type": "GUARDRAIL",
-      "criticality": "ALERTA",
-      "customizable": true,
-      "optional": false,
-      "category": "quality",
-      "source_file": "guardrails/GUARDRAIL-001-no-bare-exceptions.md",
-      "content": "# GUARDRAIL-001: No bare exceptions in production code\n\n## Description\n\nBare `except:` or `except Exception:` clauses are forbidden in source code (except in tests).\nMust catch specific exceptions.\n\n## Implementation\n\n```python\n# \u274c BAD\ntry:\n    result = dangerous_operation()\nexcept:\n    print(\"Error!\")\n\n# \u2705 GOOD\ntry:\n    result = dangerous_operation()\nexcept ValueError as e:\n    logger.error(f\"Invalid value: {e}\")\n    raise CustomError(f\"Could not process: {e}\") from e\n```\n\n## Exceptions\n\n- Tests may use bare `except` if needed\n- Shell scripts may use catch-all\n\n## Validation\n\n```bash\ngrep -r \"except:\\|except Exception:\" src/ && exit 1\npytest tests/quality/test_bare_exceptions.py -v\n```\n\n## Criticality\n\n- OBRIGAT\u00d3RIO: In user-facing APIs\n- ALERTA: In internal utilities\n- OPCIONAL: In batch jobs\n"
-    },
-    {
-      "id": "G01",
-      "title": "\ud83d\udee0\ufe0f Constitution Customization Guide",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
-    },
-    {
-      "id": "G02",
-      "title": "When to Customize",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- \u2705 Your domain has different scale needs (embedded vs cloud) - \u2705 Your tech stack differs from Python/FastAPI - \u2705 Your team has different constraints - \u2705 You need fewer/more layers than the standard..."
-    },
-    {
-      "id": "G03",
-      "title": "What's Immutable vs Flexible",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G04",
-      "title": "\u2705 Immutable Core (DO NOT CHANGE)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "These 5 principles must stay in every SDD Constitution: 1. **Clean separation of concerns** \u2014 Business logic isolated from infrastructure 2. **Explicit governance** \u2014 Rules documented, not implicit..."
-    },
-    {
-      "id": "G05",
-      "title": "\u2705 Flexible (You Choose)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "These aspects can be customized: - **Number of layers** \u2014 4-layer, 6-layer, 8-layer depending on your needs - **Specific ports** \u2014 What adapter contracts your domain needs - **Testing strategy** \u2014..."
-    },
-    {
-      "id": "G06",
-      "title": "Step-by-Step Customization",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G07",
-      "title": "Step 1: Choose Your Baseline",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Start with `/EXECUTION/spec/guides/adoption/templates/lite-constitution.yaml` - Modify the 5 principles for your domain - Takes: 15 minutes - Start with..."
-    },
-    {
-      "id": "G08",
-      "title": "Step 2: Identify Your Constraints",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Answer these questions: 1. **What's your scale?** - Solo dev \u2192 ULTRA-LITE - Small team (< 5) \u2192 LITE - Production system \u2192 FULL 2. **What's your primary I/O pattern?** - Async (web services) \u2192 Keep..."
-    },
-    {
-      "id": "G09",
-      "title": "Step 3: Create Your Constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Create `.ai/constitution.md` in your project: ```markdown"
-    },
-    {
-      "id": "G10",
-      "title": "[Your Project] Constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G11",
-      "title": "Core Principles",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G12",
-      "title": "Principle 1: Clean Separation",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "[Explain for your domain]"
-    },
-    {
-      "id": "G13",
-      "title": "Principle 2: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "[etc.]"
-    },
-    {
-      "id": "G14",
-      "title": "Your 3-5 Rules",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G15",
-      "title": "Rule 1: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G16",
-      "title": "Rule 2: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G17",
-      "title": "Rule 3: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G18",
-      "title": "Definition of Done (5 items)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [ ] Feature implemented - [ ] Tests passing - [ ] [Your #3] - [ ] [Your #4] - [ ] [Your #5]"
-    },
-    {
-      "id": "G19",
-      "title": "Customizations from SDD LITE",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [Async requirement waived because: embedded system] - [Simplified to 4-layer because: fixed infrastructure] - [Added: load testing requirement] - [Clean separation] - [Explicit rules] - [Test..."
-    },
-    {
-      "id": "G20",
-      "title": "Step 4: Document Your Deviations",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "documentation",
-      "source_file": "guidelines.dsl",
-      "content": "For each customization, explain: 1. **What** \u2014 What principle/rule did you change? 2. **Why** \u2014 Why was the standard version not suitable? 3. **How** \u2014 What's your alternative? 4. **Validation** \u2014..."
-    },
-    {
-      "id": "G21",
-      "title": "Customization: No Async-First",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Embedded system with single-threaded event loop - All I/O is sequential and blocking - Async would add unnecessary complexity - Single-threaded execution model - Clear sequential I/O operations -..."
-    },
-    {
-      "id": "G22",
-      "title": "Step 5: Validate Your Custom Constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```bash"
-    },
-    {
-      "id": "G23",
-      "title": "Validate your constitution syntax",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "python -c \\"
-    },
-    {
-      "id": "G24",
-      "title": "Check your code matches the constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "pytest tests/constitution/"
-    },
-    {
-      "id": "G25",
-      "title": "Example test:",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "testing",
-      "source_file": "guidelines.dsl",
-      "content": "def test_no_framework_in_domain(): validate customization no framework imports in domain"
-    },
-    {
-      "id": "G26",
-      "title": "Step 6: Version Your Constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Track changes like you'd track code: ```markdown"
-    },
-    {
-      "id": "G27",
-      "title": "[Your Project] Constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G28",
-      "title": "Change History",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G29",
-      "title": "v1.2 (2026-04-20)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Added load testing requirement (Rule 3) - Increased concurrent entity requirement from 10 to 20"
-    },
-    {
-      "id": "G30",
-      "title": "v1.1 (2026-04-15)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Simplified to 4-layer architecture - Waived async-first for embedded system"
-    },
-    {
-      "id": "G31",
-      "title": "v1.0 (2026-04-10)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Initial custom constitution based on SDD LITE ``` ---"
-    },
-    {
-      "id": "G32",
-      "title": "Common Customizations",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G33",
-      "title": "1. Embedded System (No Async)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
-    },
-    {
-      "id": "G34",
-      "title": "Core Principles",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G35",
-      "title": "Principle 1: Clean Separation",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "[Same as SDD]"
-    },
-    {
-      "id": "G36",
-      "title": "Principle 2: Single-Threaded Execution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "All code runs on a single thread with sequential I/O. Async/await is not used. Functions are synchronous."
-    },
-    {
-      "id": "G37",
-      "title": "Principle 3: Clear Ownership",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "Each module owns its resources. No shared mutable state."
-    },
-    {
-      "id": "G38",
-      "title": "Principle 4: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "[Continue with SDD principles] ```"
-    },
-    {
-      "id": "G39",
-      "title": "2. CLI Tool (No HTTP Layer)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G40",
-      "title": "3. Data Pipeline (Focus on Resilience)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
-    },
-    {
-      "id": "G41",
-      "title": "Rule 4: Checkpointing",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Every pipeline stage has a checkpoint. If failure occurs, resume from last checkpoint (not restart)."
-    },
-    {
-      "id": "G42",
-      "title": "Rule 5: Dead Letter Queue",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Failed items go to DLQ for manual review, not retry loops. ```"
-    },
-    {
-      "id": "G43",
-      "title": "4. Microservice (Focus on Contract Testing)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "testing",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
-    },
-    {
-      "id": "G44",
-      "title": "Rule X: API Contract Testing",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "testing",
-      "source_file": "guidelines.dsl",
-      "content": "Every endpoint has a contract test. Consumer contracts defined in OpenAPI/Pact. Producer validates against consumer contracts. ``` ---"
-    },
-    {
-      "id": "G45",
-      "title": "Template: Custom Constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
-    },
-    {
-      "id": "G46",
-      "title": "[Project Name] Constitution",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "naming",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G47",
-      "title": "Our Context",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G48",
-      "title": "Core Principles (5)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G49",
-      "title": "Principle 1: [Name]",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "naming",
-      "source_file": "guidelines.dsl",
-      "content": "[Repeat for 5 principles]"
-    },
-    {
-      "id": "G50",
-      "title": "Rules (3-5)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G51",
-      "title": "Rule 1: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G52",
-      "title": "Rule 2: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G53",
-      "title": "Rule 3: ...",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G54",
-      "title": "Definition of Done",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [ ] Feature implemented - [ ] Tests passing - [ ] [Your #3] - [ ] [Your #4] - [ ] [Your #5]"
-    },
-    {
-      "id": "G55",
-      "title": "Deviations from SDD",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "[List what you changed and why]"
-    },
-    {
-      "id": "G56",
-      "title": "Validation",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "[How you verify this works]"
-    },
-    {
-      "id": "G57",
-      "title": "Team Sign-Off",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [Name]: [Date] - [Name]: [Date]"
-    },
-    {
-      "id": "G58",
-      "title": "References",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [SDD Baseline Document] - [Your project architecture] - [Additional standards] ``` ---"
-    },
-    {
-      "id": "G59",
-      "title": "When Customization Goes Wrong",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G60",
-      "title": "\ud83d\udea8 Red Flags",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "If you find yourself doing these, **stop and reconsider:** - \u274c \\"
-    },
-    {
-      "id": "G61",
-      "title": "\u2705 Signs of Good Customization",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- \u2705 Constitution is 2-4 pages - \u2705 Every change is documented with rationale - \u2705 Team agrees on it (sign-off document) - \u2705 Validation is automated (tests or linting) - \u2705 You can explain each..."
-    },
-    {
-      "id": "G62",
-      "title": "Next Steps",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "1. **Choose your baseline** \u2014 ULTRA-LITE, LITE, or FULL? 2. **Answer the 5 constraint questions** (Step 2) 3. **Create your constitution** (Step 3) 4. **Get team buy-in** (sign-off) 5. **Add..."
-    },
-    {
-      "id": "G63",
-      "title": "Getting Help",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "| Component | Can Customize | Recommendation | |-----------|---------------|-----------------| | **Number of layers** | \u2705 Yes | Document why (4, 6, or 8) | | **Specific rules** | \u2705 Yes | Keep..."
-    },
-    {
-      "id": "G64",
-      "title": "\u26a1 IA-FIRST MARKDOWN SPECIFICATION",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
-    },
-    {
-      "id": "G65",
-      "title": "\ud83d\udccb Overview",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "IA-FIRST (AI-First) is a markdown format designed for: - \u2705 Machine parsing (AI agents, scripts) - \u2705 Clarity (humans and machines) - \u2705 Consistency (no format variations) - \u2705 Efficiency (reduced..."
-    },
-    {
-      "id": "G66",
-      "title": "\ud83c\udfaf The 4 Core Rules",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G67",
-      "title": "Rule 1: Heading Hierarchy (H1 \u2192 H2 \u2192 H3 \u2192 Lists)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown \u2705 CORRECT:"
-    },
-    {
-      "id": "G68",
-      "title": "Main Title (H1 \u2014 One per document)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "documentation",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G69",
-      "title": "Section (H2 \u2014 Major topics)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G70",
-      "title": "Subsection (H3 \u2014 Sub-topics)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Item 1 - Item 2 - Nested item \u274c WRONG:"
-    },
-    {
-      "id": "G71",
-      "title": "Title (H1)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G72",
-      "title": "Skipped levels (H4 \u2014 no H2/H3)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "\u274c WRONG:"
-    },
-    {
-      "id": "G73",
-      "title": "Title (H1)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G74",
-      "title": "Section (H2)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G75",
-      "title": "Prose text without heading",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "Some paragraph text here (shouldn't exist without H3) - Items follow prose ``` ---"
-    },
-    {
-      "id": "G76",
-      "title": "Rule 2: Links Use Markdown Format ONLY",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "code",
-      "source_file": "guidelines.dsl",
-      "content": "---"
-    },
-    {
-      "id": "G77",
-      "title": "Rule 3: Emoji Markers for Decisions",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
-    },
-    {
-      "id": "G78",
-      "title": "Rule 4: Lists for Complex Ideas",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
-    },
-    {
-      "id": "G79",
-      "title": "\ud83d\udd27 How to Apply IA-FIRST",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G80",
-      "title": "Option A: Auto-Fix (Recommended)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "This automatically: - \u2705 Fixes heading hierarchy - \u2705 Adds missing IA-FIRST notice - \u2705 Suggests emoji markers - \u2705 Reports non-markdown links"
-    },
-    {
-      "id": "G81",
-      "title": "Option B: Manual Application",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G82",
-      "title": "Step 1: Add IA-FIRST Header",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Place this after your H1 title: ```markdown"
-    },
-    {
-      "id": "G83",
-      "title": "Document Title",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "documentation",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G84",
-      "title": "\u26a1 IA-FIRST DESIGN NOTICE",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Structure: H1 \u2192 H2 (sections) \u2192 H3 (subsections) \u2192 Lists - All lists use `-` (not numbers or bullets) - All links use `[text](path.md)` format (no backticks) - All constraints marked with emoji (\u2705,..."
-    },
-    {
-      "id": "G85",
-      "title": "Step 2: Add Status Metadata",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G86",
-      "title": "Step 3: Restructure to H2/H3 Hierarchy",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
-    },
-    {
-      "id": "G87",
-      "title": "My Document",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "documentation",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G88",
-      "title": "\u26a1 IA-FIRST DESIGN NOTICE",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "[As above]"
-    },
-    {
-      "id": "G89",
-      "title": "Major Topic 1",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G90",
-      "title": "Subtopic 1.1",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G91",
-      "title": "Subtopic 1.2",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G92",
-      "title": "Major Topic 2",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G93",
-      "title": "Subtopic 2.1",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Item A - Item B - Nested detail ```"
-    },
-    {
-      "id": "G94",
-      "title": "Step 4: Replace Prose with Lists",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
-    },
-    {
-      "id": "G95",
-      "title": "Architecture Layers",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "System components: - Storage layer: handles all data persistence - Index layer: maintains vector index for similarity search - Generation layer: calls the LLM ``` ---"
-    },
-    {
-      "id": "G96",
-      "title": "\u2705 Validation Checklist",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Before committing documentation changes: ---"
-    },
-    {
-      "id": "G97",
-      "title": "\ud83d\udd0d Examples",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
-    },
-    {
-      "id": "G98",
-      "title": "Example 1: Before (Non-IA-FIRST)",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
-    },
-    {
-      "id": "G99",
-      "title": "Configuration",
-      "type": "GUIDELINE",
-      "criticality": "OPCIONAL",
-      "customizable": true,
-      "optional": true,
-      "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "The system uses immutable configuration files. These files define important parameters like the maximum number of concurrent campaigns and the LLM model to use. You can't change them after startup...."
-    },
     {
       "id": "G100",
       "title": "Example 1: After (IA-FIRST)",
@@ -1111,8 +12,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "```markdown"
+      "source_file": "source/guidelines/G100-example-1-after-ia-first.md"
     },
     {
       "id": "G101",
@@ -1122,19 +22,17 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G101-configuration-management.md"
     },
     {
       "id": "G102",
-      "title": "\u26a1 IA-FIRST DESIGN NOTICE",
+      "title": "⚡ IA-FIRST DESIGN NOTICE",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "[Standard notice...]"
+      "source_file": "source/guidelines/G102-ia-first-design-notice.md"
     },
     {
       "id": "G103",
@@ -1144,8 +42,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Immutable config defines critical parameters: - MAX_CONCURRENT_CAMPAIGNS: limit on parallel campaigns - LLM_MODEL_VERSION: AI model selection - VECTOR_INDEX_DIMENSION: embedding dimension 1. Edit..."
+      "source_file": "source/guidelines/G103-immutable-configuration.md"
     },
     {
       "id": "G104",
@@ -1155,8 +52,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Mutable config can change live without redeployment: - LLM_TEMPERATURE: within bounds [0.0, 1.0] - CACHE_TTL_SECONDS: within bounds [60, 3600] - RETRY_BACKOFF_MS: within bounds [100, 10000] \ud83c\udfaf..."
+      "source_file": "source/guidelines/G104-mutable-configuration.md"
     },
     {
       "id": "G105",
@@ -1166,19 +62,17 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Config locations by type: | Type | Location | Mutable? | |------|----------|----------| | Immutable | pyproject.toml | No | | Secrets | Kubernetes secrets | Admin only | | Mutable | Admin dashboard |..."
+      "source_file": "source/guidelines/G105-configuration-storage.md"
     },
     {
       "id": "G106",
-      "title": "\ud83d\udcca Impact on AI Parsing",
+      "title": "📊 Impact on AI Parsing",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G106-impact-on-ai-parsing.md"
     },
     {
       "id": "G107",
@@ -1188,8 +82,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G107-before-non-ia-first.md"
     },
     {
       "id": "G108",
@@ -1199,107 +92,97 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
+      "source_file": "source/guidelines/G108-after-ia-first.md"
     },
     {
       "id": "G109",
-      "title": "\ud83d\udd17 References",
+      "title": "🔗 References",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [validate-ia-first.py](../SCRIPTS/validate-ia-first.py) \u2014 Automated validation - [Quality Audit](../../../../context/runtime-state/analysis/WORLD_CLASS_REVIEW.md) \u2014 Architecture review - [Example:..."
+      "source_file": "source/guidelines/G109-references.md"
     },
     {
       "id": "G110",
-      "title": "\u26a0\ufe0f Common Mistakes",
+      "title": "⚠️ Common Mistakes",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "| Mistake | Impact | Fix | |---------|--------|-----| | Mixing prose + lists in H2 | AI confusion | Use lists only | | Backtick links `[text](path)` | Parser error | Remove backticks | | H1 \u2192 H4..."
+      "source_file": "source/guidelines/G110-common-mistakes.md"
     },
     {
       "id": "G111",
-      "title": "\u2705 Next Steps",
+      "title": "✅ Next Steps",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "1. **Audit existing docs:** `python validate-ia-first.py --audit docs/ia/` 2. **Auto-fix:** `python validate-ia-first.py --fix --audit docs/ia/` 3. **Review changes:** Check git diff 4. **Commit:**..."
+      "source_file": "source/guidelines/G111-next-steps.md"
     },
     {
       "id": "G112",
-      "title": "\ud83d\udcda GUIDES ORGANIZATION",
+      "title": "📚 GUIDES ORGANIZATION",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "New structure for guides by purpose: ---"
+      "source_file": "source/guidelines/G112-guides-organization.md"
     },
     {
       "id": "G113",
-      "title": "\ud83d\udfe2 ONBOARDING",
+      "title": "🟢 ONBOARDING",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "When starting a new agent session: 1. **FIRST_SESSION_SETUP.md** \u2014 15-minute orientation - Understand documentation structure - Lock to ia-rules.md - Choose your PATH - Check execution state - Load..."
+      "source_file": "source/guidelines/G113-onboarding.md"
     },
     {
       "id": "G114",
-      "title": "\ud83d\udd35 IMPLEMENTATION",
+      "title": "🔵 IMPLEMENTATION",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "When building features: 1. **IMPLEMENTATION_ROADMAP.md** \u2014 Step-by-step process - Full workflow from idea to merge - Checkpoints along the way - Integration points 2. **DESIGN_DECISIONS.md** \u2014 Making..."
+      "source_file": "source/guidelines/G114-implementation.md"
     },
     {
       "id": "G115",
-      "title": "\ud83d\udfe3 NAVIGATION",
+      "title": "🟣 NAVIGATION",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Finding what you need: 1. **INDEX.md** \u2014 \\"
+      "source_file": "source/guidelines/G115-navigation.md"
     },
     {
       "id": "G116",
-      "title": "\ud83d\udfe1 CONTEXT",
+      "title": "🟡 CONTEXT",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Background and historical information: 1. **DELIVERY_SUMMARY.md** \u2014 What was delivered - New files created - Files changed - Impact metrics 2. **FINAL_STATUS.md** \u2014 Completion checklist -..."
+      "source_file": "source/guidelines/G116-context.md"
     },
     {
       "id": "G117",
-      "title": "\ud83d\udccb REFERENCE",
+      "title": "📋 REFERENCE",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Lookup tables and definitions: 1. **FAQ.md** \u2014 Common questions and answers - \\"
+      "source_file": "source/guidelines/G117-reference.md"
     },
     {
       "id": "G118",
@@ -1309,8 +192,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
+      "source_file": "source/guidelines/G118-quick-navigation.md"
     },
     {
       "id": "G119",
@@ -1320,30 +202,27 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Old structure (flat): New structure (organized): Old files still exist at root level for compatibility during transition."
+      "source_file": "source/guidelines/G119-migration-note.md"
     },
     {
       "id": "G120",
-      "title": "\ud83d\udcda GUIDES INDEX \u2014 On-Demand Reading",
+      "title": "📚 GUIDES INDEX — On-Demand Reading",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
+      "source_file": "source/guidelines/G120-guides-index-on-demand-reading.md"
     },
     {
       "id": "G121",
-      "title": "\ud83c\udfaf I need help with...",
+      "title": "🎯 I need help with...",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G121-i-need-help-with.md"
     },
     {
       "id": "G122",
@@ -1353,8 +232,7 @@
       "customizable": true,
       "optional": true,
       "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Time:** 30 minutes \u2192 **What to read:** 1. [FIRST_SESSION_SETUP.md](onboarding/FIRST_SESSION_SETUP.md) (15 min) 2. [QUICK_START.md](onboarding/QUICK_START.md) (5 min) 3...."
+      "source_file": "source/guidelines/G122-.md"
     },
     {
       "id": "G123",
@@ -1364,8 +242,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Time:** 15 minutes reading \u2192 **What to read:** 1. [FIRST_SESSION_SETUP.md](onboarding/FIRST_SESSION_SETUP.md) \u00a71-3 (5 min) 2...."
+      "source_file": "source/guidelines/G123-.md"
     },
     {
       "id": "G124",
@@ -1375,8 +252,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Time:** 20 minutes reading \u2192 **What to read:** 1. [QUICK_START.md](onboarding/QUICK_START.md) (3 min) 2. `/EXECUTION/spec/CANONICAL/rules/constitution.md` \u2014 sections 1-3 (10 min) 3...."
+      "source_file": "source/guidelines/G124-.md"
     },
     {
       "id": "G125",
@@ -1386,8 +262,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Time:** 45 minutes reading \u2192 **What to read:** 1. [QUICK_START.md](onboarding/QUICK_START.md) (3 min) 2. `/EXECUTION/spec/CANONICAL/rules/constitution.md` \u2014 ALL sections (20 min) 3...."
+      "source_file": "source/guidelines/G125-.md"
     },
     {
       "id": "G126",
@@ -1397,19 +272,17 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Time:** 30 minutes reading \u2192 **What to read:** 1. [FIRST_SESSION_SETUP.md](onboarding/FIRST_SESSION_SETUP.md) (15 min) 2...."
+      "source_file": "source/guidelines/G126-.md"
     },
     {
       "id": "G127",
-      "title": "\ud83d\udd0d I'm stuck with...",
+      "title": "🔍 I'm stuck with...",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G127-im-stuck-with.md"
     },
     {
       "id": "G128",
@@ -1419,8 +292,7 @@
       "customizable": true,
       "optional": true,
       "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Read:** [CI/CD validation guide](../operational/README.md) \u2192 **Time:** 10 minutes"
+      "source_file": "source/guidelines/G128-.md"
     },
     {
       "id": "G129",
@@ -1430,8 +302,7 @@
       "customizable": true,
       "optional": true,
       "category": "testing",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Read:** 1. [IMPLEMENTATION_ROADMAP.md](implementation/IMPLEMENTATION_ROADMAP.md) (find similar feature) 2. `/EXECUTION/spec/CANONICAL/specifications/testing.md` (understand test types) \u2192..."
+      "source_file": "source/guidelines/G129-.md"
     },
     {
       "id": "G130",
@@ -1441,8 +312,7 @@
       "customizable": true,
       "optional": true,
       "category": "performance",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Read:** 1. `/EXECUTION/spec/CANONICAL/specifications/performance.md` (SLO targets) 2. [Performance SLOs](/EXECUTION/spec/CANONICAL/specifications/performance.md) \u2192 **Time:** 20 minutes"
+      "source_file": "source/guidelines/G130-.md"
     },
     {
       "id": "G131",
@@ -1452,19 +322,17 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "\u2192 **Read:** 1. Relevant ADR in `/EXECUTION/spec/CANONICAL/decisions/` 2. Project specialization in `/EXECUTION/spec/custom/rpg-narrative-server/SPECIALIZATIONS/` \u2192 **Time:** 15 minutes ---"
+      "source_file": "source/guidelines/G131-.md"
     },
     {
       "id": "G132",
-      "title": "\ud83d\udc65 By Role",
+      "title": "👥 By Role",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G132-by-role.md"
     },
     {
       "id": "G133",
@@ -1474,8 +342,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "1. `/EXECUTION/spec/CANONICAL/rules/constitution.md` (principles) 2. `/EXECUTION/spec/CANONICAL/specifications/architecture.md` (design) 3...."
+      "source_file": "source/guidelines/G133-backend-developer.md"
     },
     {
       "id": "G134",
@@ -1485,8 +352,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "1. `/EXECUTION/spec/CANONICAL/specifications/observability.md` (logging/metrics) 2. `/EXECUTION/spec/CANONICAL/specifications/performance.md` (SLOs) 3. [CI/CD validation..."
+      "source_file": "source/guidelines/G134-devops-sre.md"
     },
     {
       "id": "G135",
@@ -1496,8 +362,7 @@
       "customizable": true,
       "optional": true,
       "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "1. [YOUR_VISION_IMPLEMENTED.md](context/YOUR_VISION_IMPLEMENTED.md) (overview) 2. `/EXECUTION/spec/CANONICAL/rules/backward-compatibility-policy.md` (when breaking changes allowed) 3...."
+      "source_file": "source/guidelines/G135-product-manager.md"
     },
     {
       "id": "G136",
@@ -1507,19 +372,17 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "1. `/EXECUTION/spec/CANONICAL/rules/constitution.md` (ALL) 2. `/EXECUTION/spec/CANONICAL/specifications/architecture.md` (ALL) 3. `/EXECUTION/spec/CANONICAL/decisions/` (ALL ADRs) -..."
+      "source_file": "source/guidelines/G136-architect.md"
     },
     {
       "id": "G137",
-      "title": "\u23f1\ufe0f By Time Budget",
+      "title": "⏱️ By Time Budget",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G137-by-time-budget.md"
     },
     {
       "id": "G138",
@@ -1529,8 +392,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [QUICK_START.md](onboarding/QUICK_START.md) - Specific ADR title or one section"
+      "source_file": "source/guidelines/G138-5-minutes-quick-question.md"
     },
     {
       "id": "G139",
@@ -1540,8 +402,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- One principle from `/EXECUTION/spec/CANONICAL/rules/constitution.md` - One specification from `/EXECUTION/spec/CANONICAL/specifications/` - Project specialization overview"
+      "source_file": "source/guidelines/G139-15-minutes-quick-decision.md"
     },
     {
       "id": "G140",
@@ -1551,8 +412,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- [FIRST_SESSION_SETUP.md](onboarding/FIRST_SESSION_SETUP.md) - Relevant PATH from [QUICK_START.md](onboarding/QUICK_START.md) - Project-specific guides"
+      "source_file": "source/guidelines/G140-30-minutes-daily-work.md"
     },
     {
       "id": "G141",
@@ -1562,8 +422,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Full `/EXECUTION/spec/CANONICAL/rules/constitution.md` - Full `/EXECUTION/spec/CANONICAL/specifications/architecture.md` - Relevant ADRs (2-3)"
+      "source_file": "source/guidelines/G141-1-hour-in-depth-understanding.md"
     },
     {
       "id": "G142",
@@ -1573,19 +432,17 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "- Complete `/EXECUTION/spec/CANONICAL/` layer - Complete `/EXECUTION/spec/custom/rpg-narrative-server/` layer - Relevant guides for your role ---"
+      "source_file": "source/guidelines/G142-2-hours-deep-learning.md"
     },
     {
       "id": "G143",
-      "title": "\ud83d\uddfa\ufe0f Documentation Map",
+      "title": "🗺️ Documentation Map",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "documentation",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G143-documentation-map.md"
     },
     {
       "id": "G144",
@@ -1595,8 +452,7 @@
       "customizable": true,
       "optional": true,
       "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "Used when: Understanding principles, learning patterns, implementing across projects"
+      "source_file": "source/guidelines/G144-canonical-layer-generic-all-projects-inherit.md"
     },
     {
       "id": "G145",
@@ -1606,8 +462,7 @@
       "customizable": true,
       "optional": true,
       "category": "git",
-      "source_file": "guidelines.dsl",
-      "content": "Used when: Implementing rpg-narrative-server features"
+      "source_file": "source/guidelines/G145-specializations-layer-project-specific.md"
     },
     {
       "id": "G146",
@@ -1617,19 +472,17 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "Used when: Lost, stuck, or learning ---"
+      "source_file": "source/guidelines/G146-guides-layer-navigation-learning.md"
     },
     {
       "id": "G147",
-      "title": "\ud83d\ude80 Reading Flow Examples",
+      "title": "🚀 Reading Flow Examples",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G147-reading-flow-examples.md"
     },
     {
       "id": "G148",
@@ -1639,8 +492,7 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": ""
+      "source_file": "source/guidelines/G148-example-1-i-want-to-add-campaign-search.md"
     },
     {
       "id": "G149",
@@ -1650,21 +502,723 @@
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "---"
+      "source_file": "source/guidelines/G149-example-2-bug-fix-in-campaign-isolation.md"
     },
     {
       "id": "G150",
-      "title": "\u2705 Loading Optimization Checklist",
+      "title": "✅ Loading Optimization Checklist",
       "type": "GUIDELINE",
       "criticality": "OPCIONAL",
       "customizable": true,
       "optional": true,
       "category": "general",
-      "source_file": "guidelines.dsl",
-      "content": "When reading docs: - [ ] Know your time budget (5, 15, 30, 60+ minutes) - [ ] Know your role (backend, devops, PM, architect) - [ ] Know your task (bug fix, feature, learning) - [ ] Read ONLY what's needed"
+      "source_file": "source/guidelines/G150-loading-optimization-checklist.md"
+    },
+    {
+      "id": "G31",
+      "title": "v1.0 (2026-04-10)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G31-v10-2026-04-10.md"
+    },
+    {
+      "id": "G32",
+      "title": "Common Customizations",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G32-common-customizations.md"
+    },
+    {
+      "id": "G33",
+      "title": "1. Embedded System (No Async)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G33-1-embedded-system-no-async.md"
+    },
+    {
+      "id": "G34",
+      "title": "Core Principles",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G34-core-principles.md"
+    },
+    {
+      "id": "G35",
+      "title": "Principle 1: Clean Separation",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G35-principle-1-clean-separation.md"
+    },
+    {
+      "id": "G36",
+      "title": "Principle 2: Single-Threaded Execution",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G36-principle-2-single-threaded-execution.md"
+    },
+    {
+      "id": "G37",
+      "title": "Principle 3: Clear Ownership",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G37-principle-3-clear-ownership.md"
+    },
+    {
+      "id": "G38",
+      "title": "Principle 4: ...",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G38-principle-4.md"
+    },
+    {
+      "id": "G39",
+      "title": "2. CLI Tool (No HTTP Layer)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G39-2-cli-tool-no-http-layer.md"
+    },
+    {
+      "id": "G40",
+      "title": "3. Data Pipeline (Focus on Resilience)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G40-3-data-pipeline-focus-on-resilience.md"
+    },
+    {
+      "id": "G41",
+      "title": "Rule 4: Checkpointing",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G41-rule-4-checkpointing.md"
+    },
+    {
+      "id": "G42",
+      "title": "Rule 5: Dead Letter Queue",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G42-rule-5-dead-letter-queue.md"
+    },
+    {
+      "id": "G43",
+      "title": "4. Microservice (Focus on Contract Testing)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "testing",
+      "source_file": "source/guidelines/G43-4-microservice-focus-on-contract-testing.md"
+    },
+    {
+      "id": "G44",
+      "title": "Rule X: API Contract Testing",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "testing",
+      "source_file": "source/guidelines/G44-rule-x-api-contract-testing.md"
+    },
+    {
+      "id": "G45",
+      "title": "Template: Custom Constitution",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G45-template-custom-constitution.md"
+    },
+    {
+      "id": "G46",
+      "title": "[Project Name] Constitution",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "naming",
+      "source_file": "source/guidelines/G46-project-name-constitution.md"
+    },
+    {
+      "id": "G47",
+      "title": "Our Context",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G47-our-context.md"
+    },
+    {
+      "id": "G48",
+      "title": "Core Principles (5)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G48-core-principles-5.md"
+    },
+    {
+      "id": "G49",
+      "title": "Principle 1: [Name]",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "naming",
+      "source_file": "source/guidelines/G49-principle-1-name.md"
+    },
+    {
+      "id": "G50",
+      "title": "Rules (3-5)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G50-rules-3-5.md"
+    },
+    {
+      "id": "G51",
+      "title": "Rule 1: ...",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G51-rule-1.md"
+    },
+    {
+      "id": "G52",
+      "title": "Rule 2: ...",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G52-rule-2.md"
+    },
+    {
+      "id": "G53",
+      "title": "Rule 3: ...",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G53-rule-3.md"
+    },
+    {
+      "id": "G54",
+      "title": "Definition of Done",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G54-definition-of-done.md"
+    },
+    {
+      "id": "G55",
+      "title": "Deviations from SDD",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G55-deviations-from-sdd.md"
+    },
+    {
+      "id": "G56",
+      "title": "Validation",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G56-validation.md"
+    },
+    {
+      "id": "G57",
+      "title": "Team Sign-Off",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G57-team-sign-off.md"
+    },
+    {
+      "id": "G58",
+      "title": "References",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G58-references.md"
+    },
+    {
+      "id": "G59",
+      "title": "When Customization Goes Wrong",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G59-when-customization-goes-wrong.md"
+    },
+    {
+      "id": "G60",
+      "title": "🚨 Red Flags",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G60-red-flags.md"
+    },
+    {
+      "id": "G61",
+      "title": "✅ Signs of Good Customization",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G61-signs-of-good-customization.md"
+    },
+    {
+      "id": "G62",
+      "title": "Next Steps",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G62-next-steps.md"
+    },
+    {
+      "id": "G63",
+      "title": "Getting Help",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G63-getting-help.md"
+    },
+    {
+      "id": "G64",
+      "title": "⚡ IA-FIRST MARKDOWN SPECIFICATION",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G64-ia-first-markdown-specification.md"
+    },
+    {
+      "id": "G65",
+      "title": "📋 Overview",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G65-overview.md"
+    },
+    {
+      "id": "G66",
+      "title": "🎯 The 4 Core Rules",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G66-the-4-core-rules.md"
+    },
+    {
+      "id": "G67",
+      "title": "Rule 1: Heading Hierarchy (H1 → H2 → H3 → Lists)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G67-rule-1-heading-hierarchy-h1-h2-h3-lists.md"
+    },
+    {
+      "id": "G68",
+      "title": "Main Title (H1 — One per document)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "documentation",
+      "source_file": "source/guidelines/G68-main-title-h1-one-per-document.md"
+    },
+    {
+      "id": "G69",
+      "title": "Section (H2 — Major topics)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G69-section-h2-major-topics.md"
+    },
+    {
+      "id": "G70",
+      "title": "Subsection (H3 — Sub-topics)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G70-subsection-h3-sub-topics.md"
+    },
+    {
+      "id": "G71",
+      "title": "Title (H1)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G71-title-h1.md"
+    },
+    {
+      "id": "G72",
+      "title": "Skipped levels (H4 — no H2/H3)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G72-skipped-levels-h4-no-h2h3.md"
+    },
+    {
+      "id": "G73",
+      "title": "Title (H1)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G73-title-h1.md"
+    },
+    {
+      "id": "G74",
+      "title": "Section (H2)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G74-section-h2.md"
+    },
+    {
+      "id": "G75",
+      "title": "Prose text without heading",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G75-prose-text-without-heading.md"
+    },
+    {
+      "id": "G76",
+      "title": "Rule 2: Links Use Markdown Format ONLY",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "code",
+      "source_file": "source/guidelines/G76-rule-2-links-use-markdown-format-only.md"
+    },
+    {
+      "id": "G77",
+      "title": "Rule 3: Emoji Markers for Decisions",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G77-rule-3-emoji-markers-for-decisions.md"
+    },
+    {
+      "id": "G78",
+      "title": "Rule 4: Lists for Complex Ideas",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G78-rule-4-lists-for-complex-ideas.md"
+    },
+    {
+      "id": "G79",
+      "title": "🔧 How to Apply IA-FIRST",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G79-how-to-apply-ia-first.md"
+    },
+    {
+      "id": "G80",
+      "title": "Option A: Auto-Fix (Recommended)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G80-option-a-auto-fix-recommended.md"
+    },
+    {
+      "id": "G81",
+      "title": "Option B: Manual Application",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G81-option-b-manual-application.md"
+    },
+    {
+      "id": "G82",
+      "title": "Step 1: Add IA-FIRST Header",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G82-step-1-add-ia-first-header.md"
+    },
+    {
+      "id": "G83",
+      "title": "Document Title",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "documentation",
+      "source_file": "source/guidelines/G83-document-title.md"
+    },
+    {
+      "id": "G84",
+      "title": "⚡ IA-FIRST DESIGN NOTICE",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G84-ia-first-design-notice.md"
+    },
+    {
+      "id": "G85",
+      "title": "Step 2: Add Status Metadata",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G85-step-2-add-status-metadata.md"
+    },
+    {
+      "id": "G86",
+      "title": "Step 3: Restructure to H2/H3 Hierarchy",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G86-step-3-restructure-to-h2h3-hierarchy.md"
+    },
+    {
+      "id": "G87",
+      "title": "My Document",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "documentation",
+      "source_file": "source/guidelines/G87-my-document.md"
+    },
+    {
+      "id": "G88",
+      "title": "⚡ IA-FIRST DESIGN NOTICE",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G88-ia-first-design-notice.md"
+    },
+    {
+      "id": "G89",
+      "title": "Major Topic 1",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G89-major-topic-1.md"
+    },
+    {
+      "id": "G90",
+      "title": "Subtopic 1.1",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G90-subtopic-11.md"
+    },
+    {
+      "id": "G91",
+      "title": "Subtopic 1.2",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G91-subtopic-12.md"
+    },
+    {
+      "id": "G92",
+      "title": "Major Topic 2",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G92-major-topic-2.md"
+    },
+    {
+      "id": "G93",
+      "title": "Subtopic 2.1",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G93-subtopic-21.md"
+    },
+    {
+      "id": "G94",
+      "title": "Step 4: Replace Prose with Lists",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "git",
+      "source_file": "source/guidelines/G94-step-4-replace-prose-with-lists.md"
+    },
+    {
+      "id": "G95",
+      "title": "Architecture Layers",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G95-architecture-layers.md"
+    },
+    {
+      "id": "G96",
+      "title": "✅ Validation Checklist",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G96-validation-checklist.md"
+    },
+    {
+      "id": "G97",
+      "title": "🔍 Examples",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G97-examples.md"
+    },
+    {
+      "id": "G98",
+      "title": "Example 1: Before (Non-IA-FIRST)",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G98-example-1-before-non-ia-first.md"
+    },
+    {
+      "id": "G99",
+      "title": "Configuration",
+      "type": "GUIDELINE",
+      "criticality": "OPCIONAL",
+      "customizable": true,
+      "optional": true,
+      "category": "general",
+      "source_file": "source/guidelines/G99-configuration.md"
+    },
+    {
+      "id": "GUARDRAIL-001",
+      "title": "No bare exceptions in production code",
+      "type": "GUARDRAIL",
+      "criticality": "ALERTA",
+      "customizable": true,
+      "optional": false,
+      "category": "quality",
+      "source_file": "source/guardrails/GUARDRAIL-001-no-bare-exceptions-in-production-code.md"
     }
   ],
-  "fingerprint": "2247922049fc14d93c174fb22a584e5640f3d456980ef57107a4083187591e38",
-  "fingerprint_core_salt": "35efc54d3e353daaf633fad531562f1da97ec17814193b7ac44b2e9ef12daddd"
+  "metadata": {
+    "total_items": 121,
+    "customizable": true
+  },
+  "fingerprint": "0093b7a85158cd6589c23d8eaacdf459ff32395a4230cc6f9b73aa8a398d3d8d",
+  "fingerprint_core_salt": "82106b0c441b311e73d03e114e5330ea38f30beff65f356dc30b9c37d862bbec"
 }

@@ -1,20 +1,17 @@
-# 📖 SDD Documentation
+# 📖 SDD Documentation Index
 
-**For complete documentation, please see:** [README.md](README.md)
+> **This file has been consolidated. Please use the new locations:**
 
----
+### Quick Navigation
 
-## Quick Navigation
-
-| What | Where |
-|------|-------|
-| **Main Entry Point** | [README.md](README.md) |
-| **Get Started** | [.sdd-core/_START_HERE.md](.sdd-core/_START_HERE.md) |
-| **Add Projects** | [.sdd-integration/README.md](.sdd-integration/README.md) |
-| **All Docs** | [.sdd-core/NAVIGATION.md](.sdd-core/NAVIGATION.md) |
-| **Version History** | [CHANGELOG.md](CHANGELOG.md) |
-| **AI Agents** | [.ai-index.md](.ai-index.md) |
+- **Main Entry Point:** [README.md](README.md)
+- **Complete Documentation Index:** [docs/INDEX.md](docs/INDEX.md)
+- **AI Agents:** [.ai-index.md](.ai-index.md)
+- **Developers:** [.sdd-core/_START_HERE.md](.sdd-core/_START_HERE.md)
+- **Adding Projects:** [.sdd-integration/README.md](.sdd-integration/README.md)
+- **Test Guide:** [docs/TEST_RUNNER_GUIDE.md](docs/TEST_RUNNER_GUIDE.md)
+- **Changelog:** [docs/CHANGELOG.md](docs/CHANGELOG.md)
 
 ---
 
-**Start with README.md for complete navigation.**
+**For the complete index with all documentation, see: [docs/INDEX.md](docs/INDEX.md)**
