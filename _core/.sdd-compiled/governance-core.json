@@ -24,29 +24,7 @@
       "category": "general",
       "source_file": "mandate.spec",
       "content": "Every system MUST meet performance Service Level Objectives. Performance is not afterthought; it is architectural requirement."
-    },
-    {
-      "id": "ADR-001",
-      "title": "Clean Architecture 8-Layer Pattern",
-      "type": "DECISION",
-      "criticality": "OBRIGAT\u00d3RIO",
-      "customizable": false,
-      "optional": false,
-      "category": "architecture",
-      "source_file": "decisions/ADR-001-clean-architecture.md",
-      "content": "# ADR-001: Clean Architecture 8-Layer Pattern\n\n## Status\n- **Accepted** \u2705\n- Proposed: 2025-06-15\n- Accepted: 2025-06-20\n\n## Context\n\n**Problem**: The system needed clear separation between business logic, adaptation, and infrastructure.\n\n## Decision\n\n**Implement 8-layer Clean Architecture**:\n\n```\nLayer 8: Controllers & Interfaces (HTTP, CLI)\nLayer 7: DTOs & Serialization (Pydantic models)\nLayer 6: Adapters (Implementation of ports)\nLayer 5: Error Mapping (Domain \u2192 HTTP)\nLayer 4: Use Cases (Orchestration)\nLayer 3: Ports (Abstraction, interfaces)\nLayer 2: Domain (Business logic)\nLayer 1: Entities (Domain models)\n```\n\n## Consequences\n\n- \u2705 Consistency across all features\n- \u2705 Easy to spot violations\n- \u26a0\ufe0f More layers = more indirection\n"
-    },
-    {
-      "id": "RULE-001",
-      "title": "All handlers must implement error handling",
-      "type": "RULE",
-      "criticality": "OBRIGAT\u00d3RIO",
-      "customizable": false,
-      "optional": false,
-      "category": "quality",
-      "source_file": "rules/RULE-001-error-handling.md",
-      "content": "# RULE-001: All handlers must implement error handling\n\n## Description\n\nEvery request handler must explicitly handle errors and return appropriate HTTP status codes.\n\n## Specification\n\n1. Try-catch blocks must be present\n2. Errors must be logged\n3. HTTP status codes must be appropriate\n4. User-facing messages must not leak internal details\n\n## Validation\n\n```bash\npytest tests/contracts/test_error_handling.py -v\n```\n\n## Related\n\n- ADR-001 (Layer 5: Error Mapping)\n- GUARDRAIL-001 (No bare exceptions)\n"
     }
   ],
-  "fingerprint": "35efc54d3e353daaf633fad531562f1da97ec17814193b7ac44b2e9ef12daddd"
+  "fingerprint": "ceab139937d01215012975f44a139a5f242caa4d1e888b9ff81a5598c1b9c572"
 }

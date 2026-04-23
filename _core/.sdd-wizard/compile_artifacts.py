@@ -70,9 +70,9 @@ def parse_guidelines_dsl(text: str) -> Tuple[int, List[Dict]]:
 def compile_artifacts(repo_root: Path):
     """Compile mandate and guidelines to runtime artifacts"""
     
-    # Load source files
-    mandate_spec_file = repo_root / ".sdd-core" / "mandate.spec"
-    guidelines_dsl_file = repo_root / ".sdd-core" / "guidelines.dsl"
+    # Load source files (moved to _spec in PHASE 4.5)
+    mandate_spec_file = repo_root / "_spec" / "mandate.spec"
+    guidelines_dsl_file = repo_root / "_spec" / "guidelines.dsl"
     
     if not mandate_spec_file.exists():
         raise FileNotFoundError(f"mandate.spec not found at {mandate_spec_file}")
@@ -117,12 +117,12 @@ def compile_artifacts(repo_root: Path):
         'compiled_at': '2026-04-22T16:57:00',
         'source': {
             'mandate_spec': {
-                'file': '.sdd-core/mandate.spec',
+                'file': '_spec/mandate.spec',
                 'count': mandate_count,
                 'ids': [m['id'] for m in mandates],
             },
             'guidelines_dsl': {
-                'file': '.sdd-core/guidelines.dsl',
+                'file': '_spec/guidelines.dsl',
                 'count': guideline_count,
                 'ids': [f"G{g['id']:02d}" for g in guidelines],
             },

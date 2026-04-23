@@ -16,8 +16,8 @@ def main():
     workspace = Path('/home/sergio/dev/sdd-architecture')
     
     files_to_compile = [
-        (workspace / '.sdd-core/mandate.spec', 'mandate.spec.compiled.json'),
-        (workspace / '.sdd-core/guidelines.dsl', 'guidelines.dsl.compiled.json'),
+        (workspace / '_spec/mandate.spec', 'mandate.spec.compiled.json'),
+        (workspace / '_spec/guidelines.dsl', 'guidelines.dsl.compiled.json'),
     ]
     
     print("=" * 70)

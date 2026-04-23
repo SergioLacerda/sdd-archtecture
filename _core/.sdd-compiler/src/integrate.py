@@ -32,17 +32,18 @@ class SDDIntegrator:
     def __init__(self, repo_root: Path = None):
         """Initialize integrator with repository root"""
         if repo_root is None:
-            # Detect repo root: go up from .sdd-compiler/src/ to find .sdd-core
-            current = Path(__file__).parent.parent.parent  # .sdd-compiler/src/ → root
+            # Detect repo root: go up from .sdd-compiler/src/ to find _core
+            current = Path(__file__).parent.parent.parent  # .sdd-compiler/src/ → _core
             if (current / ".sdd-core").exists():
-                repo_root = current
+                repo_root = current.parent  # go up one more to repo root
             else:
                 repo_root = Path.cwd()
         
         self.repo = repo_root
-        self.sdd_core = repo_root / ".sdd-core"
-        self.sdd_compiler = repo_root / ".sdd-compiler"
-        self.sdd_runtime = repo_root / ".sdd-runtime"
+        self.sdd_core = repo_root / "_core" / ".sdd-core"
+        self.sdd_spec = repo_root / "_spec"
+        self.sdd_compiler = repo_root / "_core" / ".sdd-compiler"
+        self.sdd_runtime = repo_root / "_core" / ".sdd-runtime"
         self.compiler_src = self.sdd_compiler / "src"
         
         # Metrics
@@ -55,9 +56,9 @@ class SDDIntegrator:
     def validate_paths(self) -> bool:
         """Verify all required directories and files exist"""
         required = {
-            ".sdd-core/": self.sdd_core,
-            ".sdd-core/mandate.spec": self.sdd_core / "mandate.spec",
-            ".sdd-core/guidelines.dsl": self.sdd_core / "guidelines.dsl",
+            "_spec/": self.sdd_spec,
+            "_spec/mandate.spec": self.sdd_spec / "mandate.spec",
+            "_spec/guidelines.dsl": self.sdd_spec / "guidelines.dsl",
             ".sdd-compiler/src/dsl_compiler.py": self.compiler_src / "dsl_compiler.py",
             ".sdd-runtime/": self.sdd_runtime,
         }

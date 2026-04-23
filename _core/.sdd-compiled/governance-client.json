@@ -4,17 +4,6 @@
   "generated_at": null,
   "items": [
     {
-      "id": "GUARDRAIL-001",
-      "title": "No bare exceptions in production code",
-      "type": "GUARDRAIL",
-      "criticality": "ALERTA",
-      "customizable": true,
-      "optional": false,
-      "category": "quality",
-      "source_file": "guardrails/GUARDRAIL-001-no-bare-exceptions.md",
-      "content": "# GUARDRAIL-001: No bare exceptions in production code\n\n## Description\n\nBare `except:` or `except Exception:` clauses are forbidden in source code (except in tests).\nMust catch specific exceptions.\n\n## Implementation\n\n```python\n# \u274c BAD\ntry:\n    result = dangerous_operation()\nexcept:\n    print(\"Error!\")\n\n# \u2705 GOOD\ntry:\n    result = dangerous_operation()\nexcept ValueError as e:\n    logger.error(f\"Invalid value: {e}\")\n    raise CustomError(f\"Could not process: {e}\") from e\n```\n\n## Exceptions\n\n- Tests may use bare `except` if needed\n- Shell scripts may use catch-all\n\n## Validation\n\n```bash\ngrep -r \"except:\\|except Exception:\" src/ && exit 1\npytest tests/quality/test_bare_exceptions.py -v\n```\n\n## Criticality\n\n- OBRIGAT\u00d3RIO: In user-facing APIs\n- ALERTA: In internal utilities\n- OPCIONAL: In batch jobs\n"
-    },
-    {
       "id": "G01",
       "title": "\ud83d\udee0\ufe0f Constitution Customization Guide",
       "type": "GUIDELINE",
@@ -1665,6 +1654,6 @@
       "content": "When reading docs: - [ ] Know your time budget (5, 15, 30, 60+ minutes) - [ ] Know your role (backend, devops, PM, architect) - [ ] Know your task (bug fix, feature, learning) - [ ] Read ONLY what's needed"
     }
   ],
-  "fingerprint": "2247922049fc14d93c174fb22a584e5640f3d456980ef57107a4083187591e38",
-  "fingerprint_core_salt": "35efc54d3e353daaf633fad531562f1da97ec17814193b7ac44b2e9ef12daddd"
+  "fingerprint": "8a36625929fb44064d0c05fd91b309c3d913857ce95899f85acfba91af34914c",
+  "fingerprint_core_salt": "ceab139937d01215012975f44a139a5f242caa4d1e888b9ff81a5598c1b9c572"
 }

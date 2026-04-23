@@ -21,8 +21,8 @@ def test_real_files():
     """Test compilation on real SDD v3.0 files"""
     
     files_to_compile = [
-        ("../.sdd-core/mandate.spec", "mandate.spec.compiled.json"),
-        ("../.sdd-core/guidelines.dsl", "guidelines.dsl.compiled.json"),
+        ("../../_spec/mandate.spec", "mandate.spec.compiled.json"),
+        ("../../_spec/guidelines.dsl", "guidelines.dsl.compiled.json"),
     ]
     
     print("=" * 70)

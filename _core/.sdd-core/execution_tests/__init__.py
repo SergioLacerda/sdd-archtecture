@@ -1,1 +1,0 @@
-# Spec validation test suite
