@@ -37,7 +37,7 @@ class TestPhase5ApplyTemplate:
             
             # Check that directories were created
             assert (output_dir / '.sdd' / 'CANONICAL').exists()
-            assert (output_dir / '.sdd-guidelines').exists()
+            assert (output_dir / '.sdd-core').exists()
             assert (output_dir / 'src').exists()
     
     def test_phase_5_supports_multiple_languages(self):

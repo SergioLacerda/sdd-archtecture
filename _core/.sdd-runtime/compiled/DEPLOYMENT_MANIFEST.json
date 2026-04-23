@@ -1,7 +1,7 @@
 {
   "version": "3.0",
-  "deployment_date": "2026-04-22T21:13:58.319605Z",
-  "deployment_location": "/home/sergio/dev/sdd-architecture/.sdd-runtime/compiled",
+  "deployment_date": "2026-04-23T14:41:34.298904Z",
+  "deployment_location": "/home/sergio/dev/sdd-architecture/_core/.sdd-runtime/compiled",
   "artifacts": {
     "core_msgpack": "governance-core.compiled.msgpack",
     "client_msgpack": "governance-client-template.compiled.msgpack",

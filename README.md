@@ -7,24 +7,51 @@
 
 ---
 
+## 📂 Structure (PHASE 4: Code/Docs Separation)
+
+```
+repository/
+├── _core/              # 💻 Implementation & Code (82+ tests)
+│   ├── .sdd-core/      # Governance compiler
+│   ├── .sdd-wizard/    # Wizard orchestration
+│   ├── sdd_cli/        # CLI interface
+│   ├── tests/          # All tests
+│   └── run-all-tests.py
+│
+├── _spec/              # 📚 Specification & Documentation
+│   ├── docs/           # Main documentation
+│   ├── .ai/            # AI agent config
+│   ├── .ai-index.md    # AI entry point
+│   ├── PHASE_*.md      # Phase documentation
+│   ├── guides/         # How-to guides
+│   └── CHANGELOG.md    # Version history
+│
+├── README.md (this file)
+└── Backward compatibility symlinks (.sdd-core → _core/.sdd-core, etc.)
+```
+
+**Note:** Old import paths still work via symlinks. See [_core/README.md](_core/README.md) and [_spec/README.md](_spec/README.md) for details.
+
+---
+
 ## ⚡ Quick Start (Choose Your Role)
 
 ### 👨‍💻 **I'm a Developer**
 ```bash
 # 1. Read the governance rules (5 min)
-cat .sdd-core/HONEST-CRITIQUE-CONSTITUTION.md
+cat _core/.sdd-core/HONEST-CRITIQUE-CONSTITUTION.md
 
-# 2. Follow the 7-phase workflow
-cat .sdd-core/spec/guides/onboarding/AGENT_HARNESS.md
+# 2. Follow the 7-phase workflow  
+cat _core/.sdd-core/spec/guides/onboarding/AGENT_HARNESS.md
 
 # 3. Run tests to verify setup
-python3 run-all-tests.py --fail-fast
+cd _core && python3 run-all-tests.py --fail-fast
 ```
 
 ### 🤖 **I'm an AI Agent**
 ```bash
 # 1. Your complete guide
-cat .ai-index.md
+cat _spec/.ai-index.md
 
 # 2. Verify your context
 python3 -c "print('✅ Ready for autonomous development')"
@@ -33,15 +60,18 @@ python3 -c "print('✅ Ready for autonomous development')"
 ### 📦 **I'm Adding a Project to SDD**
 ```bash
 # 1. Follow the integration checklist (30 min)
-cat .sdd-integration/CHECKLIST.md
+cat _core/.sdd-integration/CHECKLIST.md
 
 # 2. Execute 5 steps
 cd /path/to/new/project
-# See: .sdd-integration/STEP_1.md through STEP_5.md
+# See: _core/.sdd-integration/STEP_1.md through STEP_5.md
 ```
 
 ### 🔧 **I'm Using the CLI**
 ```bash
+# Navigate to core
+cd _core
+
 # Show governance configuration
 python3 -m sdd_cli governance load
 
@@ -54,17 +84,20 @@ python3 -m sdd_cli governance generate
 
 ---
 
-## 📚 Documentation (Detailed References)
+## 📚 Documentation (Choose Your Path)
 
-**For complete documentation, see [docs/INDEX.md](./docs/INDEX.md)**
+**Quick navigation:**
+- 🔤 **Code & Implementation:** See [_core/README.md](_core/README.md)
+- 📖 **Specs & Documentation:** See [_spec/README.md](_spec/README.md)
+- 📋 **Full Index:** See [_spec/docs/INDEX.md](_spec/docs/INDEX.md)
 
-| Document | Purpose | Time |
-|----------|---------|------|
-| [.ai-index.md](.ai-index.md) | AI agent entry point | 15 min |
-| [.sdd-core/_START_HERE.md](.sdd-core/_START_HERE.md) | Developer entry point | 5 min |
-| [.sdd-integration/README.md](.sdd-integration/README.md) | Add projects | 10 min |
-| [docs/TEST_RUNNER_GUIDE.md](./docs/TEST_RUNNER_GUIDE.md) | Run all tests | 10 min |
-| [docs/CHANGELOG.md](./docs/CHANGELOG.md) | Version history | varies |
+| Document | Purpose | Location | Time |
+|----------|---------|----------|------|
+| [.ai-index.md](_spec/.ai-index.md) | AI agent entry point | _spec/ | 15 min |
+| [_core/.sdd-core/_START_HERE.md](_core/.sdd-core/_START_HERE.md) | Developer entry point | _core/ | 5 min |
+| [_core/.sdd-integration/CHECKLIST.md](_core/.sdd-integration/CHECKLIST.md) | Add projects | _core/ | 10 min |
+| [_spec/docs/TEST_RUNNER_GUIDE.md](_spec/docs/TEST_RUNNER_GUIDE.md) | Run all tests | _spec/ | 10 min |
+| [_spec/CHANGELOG.md](_spec/CHANGELOG.md) | Version history | _spec/ | varies |
 
 ---
 
@@ -72,8 +105,10 @@ python3 -m sdd_cli governance generate
 
 ### Testing
 
-**Run all tests from root (7 layers):**
+**Run all tests from _core (82+ tests):**
 ```bash
+cd _core
+
 # Quick check (stop on first failure)
 python3 run-all-tests.py --fail-fast
 
@@ -87,22 +122,21 @@ python3 run-all-tests.py --list-layers
 python3 run-all-tests.py --layer "Wizard"
 ```
 
-**See:** [docs/TEST_RUNNER_GUIDE.md](./docs/TEST_RUNNER_GUIDE.md) for complete guide
+**See:** [_spec/docs/TEST_RUNNER_GUIDE.md](_spec/docs/TEST_RUNNER_GUIDE.md) for complete guide
 
 ### CLI Commands
 
-**Load governance:**
+**Navigate to _core first, then use CLI:**
 ```bash
+cd _core
+
+# Load governance
 python3 -m sdd_cli governance load
-```
 
-**Validate integrity:**
-```bash
+# Validate integrity
 python3 -m sdd_cli governance validate
-```
 
-**Generate templates:**
-```bash
+# Generate templates
 python3 -m sdd_cli governance generate
 ```
 

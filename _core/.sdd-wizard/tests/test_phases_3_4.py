@@ -108,7 +108,7 @@ class TestPhase4FilterGuidelines:
             'G003': {'title': 'Code formatting', 'tags': [], 'priority': 1},  # Universal
         }
         
-        success, report = phase_4_filter_guidelines(guidelines, language='python', profile='full')
+        success, report = phase_4_filter_guidelines(guidelines, language='python')
         
         assert success
         assert report['status'] == 'SUCCESS'
@@ -126,7 +126,7 @@ class TestPhase4FilterGuidelines:
             'G003': {'title': 'Version control', 'tags': [], 'priority': 1},  # Universal
         }
         
-        success, report = phase_4_filter_guidelines(guidelines, language='java', profile='full')
+        success, report = phase_4_filter_guidelines(guidelines, language='java')
         
         assert success
         filtered = report['data']['filtered_guidelines']
@@ -144,7 +144,7 @@ class TestPhase4FilterGuidelines:
             'G004': {'title': 'Optional', 'tags': [], 'priority': 4},
         }
         
-        success, report = phase_4_filter_guidelines(guidelines, language='python', profile='lite')
+        success, report = phase_4_filter_guidelines(guidelines, language='python')
         
         assert success
         # Profile filtering not yet implemented, so all guidelines included
@@ -161,7 +161,7 @@ class TestPhase4FilterGuidelines:
             'G004': {'title': 'Optional', 'tags': [], 'priority': 4},
         }
         
-        success, report = phase_4_filter_guidelines(guidelines, language='python', profile='full')
+        success, report = phase_4_filter_guidelines(guidelines, language='python')
         
         assert success
         filtered = report['data']['filtered_guidelines']
@@ -178,7 +178,7 @@ class TestPhase4FilterGuidelines:
             'G005': {'title': 'Universal optional', 'tags': [], 'priority': 4},
         }
         
-        success, report = phase_4_filter_guidelines(guidelines, language='python', profile='lite')
+        success, report = phase_4_filter_guidelines(guidelines, language='python')
         
         assert success
         filtered = report['data']['filtered_guidelines']
@@ -197,7 +197,7 @@ class TestPhase4FilterGuidelines:
         """Phase 4 should detect invalid language"""
         guidelines = {'G001': {'title': 'Test', 'tags': [], 'priority': 1}}
         
-        success, report = phase_4_filter_guidelines(guidelines, language='rust', profile='full')
+        success, report = phase_4_filter_guidelines(guidelines, language='rust')
         
         assert not success
         assert report['status'] == 'FAILED'
@@ -205,7 +205,7 @@ class TestPhase4FilterGuidelines:
     
     def test_phase_4_empty_guidelines(self):
         """Phase 4 should handle empty guidelines"""
-        success, report = phase_4_filter_guidelines({}, language='python', profile='full')
+        success, report = phase_4_filter_guidelines({}, language='python')
         
         assert not success
         assert report['status'] == 'FAILED'
@@ -220,7 +220,7 @@ class TestPhase4FilterGuidelines:
             'G004': {'title': 'Universal optional', 'tags': [], 'priority': 4},
         }
         
-        success, report = phase_4_filter_guidelines(guidelines, language='python', profile='lite')
+        success, report = phase_4_filter_guidelines(guidelines, language='python')
         
         assert success
         stats = report['statistics']
@@ -288,8 +288,7 @@ class TestIntegrationPhases3and4:
         # Phase 4: Filter guidelines (language only, profile not supported yet)
         g4_success, g4_report = phase_4_filter_guidelines(
             guidelines,
-            language='python',
-            profile='lite'
+            language='python'
         )
         assert g4_success
         

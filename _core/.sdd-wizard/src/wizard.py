@@ -27,7 +27,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Import phase implementations
 from orchestration.phase_1_validate import phase_1_validate_source
-from orchestration.phase_2_load_compiled import phase_2_load_compiled
+from orchestration.phase_2_load_compiled_v3 import phase_2_load_compiled_v3 as phase_2_load_compiled
 from orchestration.phase_3_filter_mandates import phase_3_filter_mandates
 from orchestration.phase_4_filter_guidelines import phase_4_filter_guidelines
 from orchestration.phase_5_apply_template import phase_5_apply_template
