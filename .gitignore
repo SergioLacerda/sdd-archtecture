@@ -45,6 +45,14 @@ htmlcov/
 .sdd-runtime/metadata.json
 !.sdd-runtime/.gitkeep
 
+# Build Artifacts (PHASE 1-3 compilation outputs)
+_core/.sdd-compiled/
+_core/build_scripts/source/
+_core/.sdd-wizard/.sdd-runtime/compiled/
+_core/.sdd-compiler/runtime/
+*.compiled.msgpack
+*.compiled.json
+
 # Wizard Output (test/temporary)
 sdd-generated/
 
